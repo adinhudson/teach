@@ -1,5 +1,6 @@
 {
   "name": "teach",
+  "homepage": "https://adinhudson.github.io/teach",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
