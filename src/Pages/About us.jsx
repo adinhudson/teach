@@ -2,10 +2,10 @@ import React from 'react';
 
 const About = () => {
   const team = [
-    { name: 'Jessica', role: 'Founder & CEO', img: '/team/Jessica.png' },
-    { name: 'Adin Hudson', role: 'Technical Support', img: '/team/Adin.png' },
-    { name: 'Dilshan Sivaperumal', role: 'Education Specialist', img: '/team/Dilshan.png' },
-    { name: 'Lydia Keenan', role: 'Education Specialist', img: '/team/Lydia.png' },
+    { name: 'Jessica', role: 'Founder & CEO', img: '/teach/team/Jessica.png' },
+    { name: 'Adin Hudson', role: 'Technical Support', img: '/teach/team/Adin.png' },
+    { name: 'Dilshan Sivaperumal', role: 'Education Specialist', img: '/teach/team/Dilshan.png' },
+    { name: 'Lydia Keenan', role: 'Education Specialist', img: '/teach/team/Lydia.png' },
     
   ];
 

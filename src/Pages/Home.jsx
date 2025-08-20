@@ -26,13 +26,15 @@ function Home() {
           </h1>
 
          
-          <img src="/MAIN-LOGO.jpg" alt="TEAch Volunteers" style={styles.mainLogo} />
+          {/* <img src="/teach/MAIN-LOGO.jpg" alt="TEAch Volunteers" style={styles.mainLogo} /> */}
+          <img src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"} style={styles.mainLogo} alt="TEAch Volunteers" />
 
          
           <div style={styles.orbit}>
-            <img src="/brands/santander.png" alt="Santander" style={styles.brandLogo} />
-            <img src="/brands/sussex.png" alt="Sussex Innovation" style={styles.brandLogo} />
-            <img src="/brands/world vision lanka.jpg" alt="World Vision Lanka" style={styles.brandLogo} />
+            {/* <img src="/brands/santander.png" alt="Santander" style={styles.brandLogo} /> */}
+            <img src={process.env.PUBLIC_URL + "/brands/santander.png"} alt="Santander" style={styles.brandLogo} />
+            <img src={process.env.PUBLIC_URL + "/brands/sussex.png"} alt="Sussex Innovation" style={styles.brandLogo} />
+            <img src={process.env.PUBLIC_URL + "/brands/world vision lanka.jpg"} alt="World Vision Lanka" style={styles.brandLogo} />
           </div>
         </div>
       </section>
@@ -45,7 +47,7 @@ function Home() {
           autoPlay
           loop
           muted={muted}
-          src="/videos/video.mp4"
+          src={process.env.PUBLIC_URL + "/videos/video.mp4"}
         />
         <button style={styles.muteButton} onClick={toggleMute}>
           {muted ? 'Unmute 🔊' : 'Mute 🔇'}

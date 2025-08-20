@@ -8,17 +8,15 @@ import About from './Pages/About us';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/teach">
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-        
           </Routes>
         </main>
-        {/* <Footer /> */}
       </div>
     </Router>
   );
