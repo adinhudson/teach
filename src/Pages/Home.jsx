@@ -1,45 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Home() {
   const [muted, setMuted] = useState(true);
   const toggleMute = () => setMuted(!muted);
 
-  useEffect(() => {
-    const styleSheet = document.styleSheets[0];
-    if (styleSheet) {
-      styleSheet.insertRule(`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `, styleSheet.cssRules.length);
-    }
-  }, []);
+  const brands = [
+    { src: "santander.png", name: "Santander" },
+    { src: "sussex.png", name: "Sussex Innovation" },
+    { src: "world vision lanka.jpg", name: "World Vision Lanka" },
+  ];
 
   return (
     <div style={styles.container}>
-      
+
+      {/* Hero Section */}
       <section style={styles.hero}>
         <div style={styles.heroContent}>
           <h1 style={styles.fancyText}>
             Empowering Communities<br />Through Education
           </h1>
 
-         
-          {/* <img src="/teach/MAIN-LOGO.jpg" alt="TEAch Volunteers" style={styles.mainLogo} /> */}
-          <img src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"} style={styles.mainLogo} alt="TEAch Volunteers" />
+          <img 
+            src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"} 
+            style={styles.mainLogo} 
+            alt="TEAch Volunteers" 
+          />
 
-         
-          <div style={styles.orbit}>
-            {/* <img src="/brands/santander.png" alt="Santander" style={styles.brandLogo} /> */}
-            <img src={process.env.PUBLIC_URL + "/brands/santander.png"} alt="Santander" style={styles.brandLogo} />
-            <img src={process.env.PUBLIC_URL + "/brands/sussex.png"} alt="Sussex Innovation" style={styles.brandLogo} />
-            <img src={process.env.PUBLIC_URL + "/brands/world vision lanka.jpg"} alt="World Vision Lanka" style={styles.brandLogo} />
+          <div style={styles.brandsContainer}>
+            {brands.map((brand, index) => (
+              <div key={index} style={styles.brandWrapper}>
+                <img
+                  src={process.env.PUBLIC_URL + "/brands/" + brand.src}
+                  alt={brand.name}
+                  title={brand.name}
+                  style={styles.brandLogo}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'scale(1.2)';
+                    e.currentTarget.style.filter = 'brightness(1.2)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.filter = 'brightness(1)';
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-     
+      {/* Video Section */}
       <section style={styles.videoSection}>
         <h2 style={styles.sectionTitle}>See Us In Action 🎥</h2>
         <video
@@ -75,7 +85,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    gap: '50px',
+    gap: '40px',
     width: '100%',
     maxWidth: '1200px',
   },
@@ -91,29 +101,28 @@ const styles = {
     position: 'relative',
   },
 
-  orbit: {
-    position: 'absolute',
-    top: '5%',          
-    right: '3%',
-    transform: 'translate(50%, -50%)',
-    width: '300px',      
-    height: '300px',     
-    borderRadius: '50%',
-    animation: 'spin 25s linear infinite',
+  brandsContainer: {
     display: 'flex',
-    justifyContent: 'space-around',
+    flexDirection: 'row', // horizontal layout
+    gap: '20px',
+    justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1,
+  },
+
+  brandWrapper: {
+    transition: 'transform 0.3s ease, filter 0.3s ease',
+    cursor: 'pointer',
   },
 
   brandLogo: {
-    width: '100px',       
-    height: '100px',      
+    width: '100px',
+    height: '100px',
     objectFit: 'contain',
     backgroundColor: '#fff',
     borderRadius: '50%',
     padding: '12px',
     boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+    transition: 'transform 0.3s ease, filter 0.3s ease',
   },
 
   fancyText: {
