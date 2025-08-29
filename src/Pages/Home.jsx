@@ -11,6 +11,13 @@ function Home() {
     { number: 4, title: 'Grow', description: 'Students gain confidence, improve grades, and open doors to new educational opportunities.', icon: '🚀' },
   ];
 
+  // Example logos – replace with your actual files and names
+  const logos = [
+    { src: "/brands/santander.png", name: "Santander" },
+    { src: "/brands/sussex.png", name: "University of Sussex" },
+    { src: "/brands/world_vision_lanka.jpg", name: "World Vision Lanka" },
+  ];
+
   return (
     <div style={styles.container}>
 
@@ -80,6 +87,21 @@ function Home() {
         </div>
       </section>
 
+      {/* Recognition Section */}
+      <section style={styles.recognitionSection}>
+        <h2 style={styles.sectionTitle}>🌟 TEAch Has Been Recognized By</h2>
+        <div style={styles.logoScroller}>
+          <div style={styles.logoTrack}>
+            {logos.concat(logos).map((logo, i) => (
+              <div key={i} style={styles.logoCard}>
+                <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={styles.logoImage} />
+                <p style={styles.logoName}>{logo.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
@@ -128,6 +150,19 @@ const styles = {
   stepNumber: { fontWeight: '800', fontSize: '1.2rem', color: '#0e0d0dff' },
   stepTitle: { fontSize: '1.4rem', fontWeight: '700', margin: '5px 0' },
   stepDescription: { fontSize: '1rem', color: '#333' },
+
+  // Recognition Section
+  recognitionSection: { padding: '50px 20px', background: '#fff7f2' },
+  logoScroller: { overflow: 'hidden', width: '100%' },
+  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
+  logoCard: { flex: '0 0 auto', margin: '0 30px', textAlign: 'center' },
+  logoImage: { height: '80px', objectFit: 'contain' },
+  logoName: { marginTop: '8px', fontSize: '0.9rem', color: '#333' },
 };
+
+// Add keyframes dynamically
+const styleSheet = document.styleSheets[0];
+const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`;
+styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
 export default Home;
