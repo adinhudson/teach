@@ -23,44 +23,34 @@ const About = () => {
   const styles = {
     hero: {
       width: '100%',
-      background: 'linear-gradient(135deg, #ff8c42, #ffa366)',
+      background: 'linear-gradient(135deg, #ff8c42, #ffb166)',
       padding: '80px 20px',
       textAlign: 'center',
       color: '#fff',
+      borderRadius: '12px',
+      marginBottom: '40px',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.2)'
     },
-    heroTitle: {
-      fontSize: '3rem',
-      fontWeight: '800',
-      margin: 0,
-    },
-    container: {
-      padding: '60px 20px',
-      maxWidth: '1000px',
-      margin: '0 auto',
-      fontFamily: 'Nunito, sans-serif',
-    },
-    section: { marginBottom: '50px' },
-    title: { fontSize: '30px', fontWeight: 'bold', marginBottom: '20px', color: '#ff8c42' },
+    heroTitle: { fontSize: '3rem', fontWeight: '800', margin: 0 },
+    container: { padding: '0 20px 60px 20px', maxWidth: '1000px', margin: '0 auto', fontFamily: 'Nunito, sans-serif' },
+    section: { marginBottom: '50px', padding: '40px 30px', borderRadius: '16px', boxShadow: '0 6px 16px rgba(0,0,0,0.15)' },
+    projectSection: { background: 'linear-gradient(135deg, #fff2e6, #ffd9b3)' },
+    visionSection: { background: 'linear-gradient(135deg, #ffe0b2, #ffcc80)' },
+    teamSection: { background: 'linear-gradient(135deg, #ffd699, #ffb84d)' },
+    partnersSection: { background: 'linear-gradient(135deg, #ffe6cc, #ffb366)' },
+    storiesSection: { background: 'linear-gradient(135deg, #fff0e6, #ff9966)' },
+    title: { fontSize: '30px', fontWeight: 'bold', marginBottom: '20px', color: '#ff6b42' },
     text: { fontSize: '17px', lineHeight: '1.7', marginBottom: '15px', color: '#333' },
     cardContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' },
     card: { 
-      background: '#fff4ee', 
-      padding: '20px', 
-      borderRadius: '12px', 
-      flex: '1 1 250px', 
-      maxWidth: '280px', 
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)', 
-      textAlign: 'center' 
+      background: '#fff4ee', padding: '20px', borderRadius: '12px', flex: '0 0 250px', maxWidth: '250px',
+      boxShadow: '0 4px 8px rgba(0,0,0,0.1)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'
     },
-    cardImg: { 
-      width: '150px',     
-      height: '150px',     
-      objectFit: 'contain', 
-      borderRadius: '12px', 
-      marginBottom: '10px', 
-      transition: 'transform 0.3s, filter 0.3s', 
-      cursor: 'pointer' 
-    },
+    cardImg: { width: '150px', height: '150px', objectFit: 'contain', borderRadius: '12px', marginBottom: '15px', transition: 'transform 0.3s, filter 0.3s', cursor: 'pointer' },
+    ctaSection: { background: 'linear-gradient(135deg, #ff8c42, #ff5e62)', color: '#fff', textAlign: 'center', padding: '70px 20px', borderRadius: '16px', marginTop: '60px', boxShadow: '0 6px 16px rgba(0,0,0,0.2)' },
+    ctaTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' },
+    ctaText: { fontSize: '1.2rem', marginBottom: '30px', lineHeight: '1.6' },
+    button: { background: '#fff', color: '#ff5e42', border: 'none', padding: '15px 35px', fontSize: '18px', fontWeight: '700', borderRadius: '50px', cursor: 'pointer', transition: 'all 0.3s ease' },
   };
 
   return (
@@ -70,51 +60,42 @@ const About = () => {
         <h1 style={styles.heroTitle}> About Us</h1>
       </section>
 
-      {/* Main Content */}
       <div style={styles.container}>
-        {/* Who We Are */}
-        <section style={styles.section}>
-          <h2 style={styles.title}>✨ Who We Are</h2>
-          <p style={styles.text}>
-            Two centuries ago, Sri Lanka’s tea industry began with workers brought from South India. 
-            They faced harsh conditions and few rights — and generations later, their families are still among the most marginalized. 
+        {/* Project Overview */}
+        <section style={{...styles.section, ...styles.projectSection}}>
+          <h2 style={styles.title}>📘 Project Overview</h2>
+          <p style={{fontWeight: '600', color: '#444', lineHeight: '2'}}>
+            Our initiative helps students in Sri Lanka’s tea plantation communities improve exam success by providing 
+            <strong style={{color: '#ff6b42'}}> live digital classes </strong> for 
+            <strong style={{color: '#ff6b42'}}> Grades 9-11 </strong> in 
+            <strong style={{color: '#ff6b42'}}> English, Maths, and Science </strong> 📚.
           </p>
-          <p style={styles.text}>
-            Many children from these communities drop out of school early, trapped in cycles of poverty. 
-            That’s where <strong>TEAch</strong> steps in.  
+          <p style={{fontWeight: '500', color: '#555', lineHeight: '1.9'}}>
+            Students gather in local hubs where lessons are streamed on large screens by 
+            <strong style={{color: '#ff6b42'}}> qualified volunteer teachers </strong> 👩‍🏫. 
           </p>
-          <p style={styles.text}>
-            We connect <strong>volunteer tutors</strong> with students who cannot afford private support. 
-            More than lessons, we provide encouragement, hope, and the chance to dream of a brighter future.  
+          <p style={{fontWeight: '500', color: '#555', lineHeight: '1.9'}}>
+            The program serves <strong style={{color: '#ff6b42'}}>10 communities</strong> in the Central Province over a minimum of 2 years. 
+            <strong style={{color: '#ff6b42'}}> 30 volunteer teachers </strong> and 
+            <strong style={{color: '#ff6b42'}}> 30 teaching assistants </strong> provide lesson notes, study guides, and support 📝.
           </p>
         </section>
 
-        {/* Our Vision */}
-        <section style={styles.section}>
+        {/* Vision */}
+        <section style={{...styles.section, ...styles.visionSection}}>
           <h2 style={styles.title}>🌍 Our Vision</h2>
-          <p style={styles.text}>
-            With <strong>91% of estate families now having smartphone internet access</strong>, education is finally within reach.  
-          </p>
-          <p style={styles.text}>
-            In partnership with <strong>World Vision Lanka</strong>, our first phase launches in September, 
-            bringing <strong>300+ students</strong> in Bogowanthalawa, Watawala, and Lindula into live classes for Maths, English, and Science.  
-          </p>
-          <p style={styles.text}>
-            These lessons help prepare students for their <strong>GCE O-Level exams</strong>, streamed directly into schools — 
-            giving them the tools to succeed like never before.  
-          </p>
+          <p style={styles.text}>With <strong style={{color:'#ff6b42'}}>91% of estate families</strong> now having smartphone internet access, education is finally within reach.</p>
+          <p style={styles.text}>In partnership with <strong style={{color:'#ff6b42'}}>World Vision Lanka</strong>, our first phase brings <strong style={{color:'#ff6b42'}}>300+ students</strong> into live classes for Maths, English, and Science.</p>
+          <p style={styles.text}>These lessons help prepare students for their <strong style={{color:'#ff6b42'}}>GCE O-Level exams</strong>, streamed directly into schools.</p>
         </section>
 
-        {/* Meet the Team */}
-        <section style={styles.section}>
+        {/* Team */}
+        <section style={{...styles.section, ...styles.teamSection}}>
           <h2 style={styles.title}>👩‍🏫 Meet the Team</h2>
           <div style={styles.cardContainer}>
             {team.map((member, index) => (
               <div key={index} style={styles.card}>
-                <img 
-                  src={member.img} 
-                  alt={member.name} 
-                  style={styles.cardImg} 
+                <img src={member.img} alt={member.name} style={styles.cardImg} 
                   onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
                   onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
                 />
@@ -125,19 +106,13 @@ const About = () => {
           </div>
         </section>
 
-        {/* Our Partners */}
-        <section style={styles.section}>
+        {/* Partners */}
+        <section style={{...styles.section, ...styles.partnersSection}}>
           <h2 style={styles.title}>🤝 Our Partners</h2>
-          <p style={styles.text}>
-            TEAch is made possible thanks to the support of global partners who believe in the power of education.  
-          </p>
           <div style={styles.cardContainer}>
             {partners.map((partner, index) => (
               <div key={index} style={styles.card}>
-                <img 
-                  src={partner.img} 
-                  alt={partner.name} 
-                  style={styles.cardImg} 
+                <img src={partner.img} alt={partner.name} style={styles.cardImg} 
                   onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
                   onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
                 />
@@ -148,15 +123,12 @@ const About = () => {
         </section>
 
         {/* Success Stories */}
-        <section style={styles.section}>
+        <section style={{...styles.section, ...styles.storiesSection}}>
           <h2 style={styles.title}>🌟 Success Stories</h2>
           <div style={styles.cardContainer}>
             {stories.map((story, index) => (
               <div key={index} style={styles.card}>
-                <img 
-                  src={story.img} 
-                  alt={story.student} 
-                  style={{...styles.cardImg, width: '160px', height: '160px'}} 
+                <img src={story.img} alt={story.student} style={{...styles.cardImg, width: '160px', height: '160px'}} 
                   onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
                   onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
                 />
@@ -165,6 +137,18 @@ const About = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Call to Action */}
+        <section style={styles.ctaSection}>
+          <h2 style={styles.ctaTitle}>🚀 Join Us Now to Change Young Lives</h2>
+          <p style={styles.ctaText}>
+            Be part of a movement that empowers children with the gift of education. <br />
+            Your time, skills, and passion can open doors to a brighter tomorrow.
+          </p>
+          <button style={styles.button} onMouseOver={e => e.currentTarget.style.background = '#ffe0d1'} onMouseOut={e => e.currentTarget.style.background = '#fff'} onClick={() => window.location.href = "/signup"}>
+            Become a Volunteer
+          </button>
         </section>
       </div>
     </div>

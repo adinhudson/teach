@@ -1,168 +1,158 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Home() {
-  const [muted, setMuted] = useState(true);
-  const toggleMute = () => setMuted(!muted);
-
-  const steps = [
-    { number: 1, title: 'Sign Up', description: 'Students and volunteers create accounts with TEAch using their email or social login. It only takes a few minutes.', icon: '👤' },
-    { number: 2, title: 'Connect', description: 'Students are matched with volunteer tutors based on subject, grade, and availability.', icon: '🔗' },
-    { number: 3, title: 'Learn', description: 'Tutors provide live online classes and support students with homework, revision, and guidance with just 2 hours a week.', icon: '📚' },
-    { number: 4, title: 'Grow', description: 'Students gain confidence, improve grades, and open doors to new educational opportunities.', icon: '🚀' },
+const About = () => {
+  const team = [
+    { name: 'Jessica', role: 'Founder & CEO', img: '/teach/team/Jessica.png' },
+    { name: 'Adin Hudson', role: 'Technical Support', img: '/teach/team/Adin.png' },
+    { name: 'Dilshan Sivaperumal', role: 'Education Specialist', img: '/teach/team/Dilshan.png' },
+    { name: 'Lydia Keenan', role: 'Education Specialist', img: '/teach/team/Lydia.png' },
   ];
 
-  // Example logos – replace with your actual files and names
-  const logos = [
-    { src: "/brands/santander.png", name: "Santander" },
-    { src: "/brands/sussex.png", name: "University of Sussex" },
-    { src: "/brands/world_vision_lanka.jpg", name: "World Vision Lanka" },
+  const stories = [
+    { student: 'Nimal', story: 'Once struggling with exams, Nimal worked with a TEAch tutor and earned top grades — opening doors to new opportunities.', img: 'Success story/Nimal.png' },
+    { student: 'Anita', story: 'From being a shy student in our program to becoming a volunteer herself, Anita proves the ripple effect of education.', img: 'Success story/Anita.png' },
+    { student: 'Kumar', story: 'Reading used to feel impossible for Kumar. Now he enjoys books and confidently takes part in class discussions.', img: 'Success story/Kumar.png' },
   ];
+
+  const partners = [
+    { name: 'Santander', img: 'brands/santander.png' },
+    { name: 'World Vision Lanka', img: 'brands/world vision lanka.jpg' },
+    { name: 'Sussex Innovation', img: 'brands/sussex.png' },
+  ];
+
+  const styles = {
+    hero: {
+      width: '100%',
+      background: 'linear-gradient(135deg, #eb7630, #ffa366)',
+      padding: '80px 20px',
+      textAlign: 'center',
+      color: '#fff',
+      borderRadius: '12px',
+      marginBottom: '40px',
+      boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+    },
+    heroTitle: { fontSize: '3rem', fontWeight: '800', margin: 0 },
+    container: { padding: '0 20px 60px 20px', maxWidth: '1000px', margin: '0 auto', fontFamily: 'Nunito, sans-serif' },
+    section: { marginBottom: '50px', padding: '40px 30px', borderRadius: '16px', boxShadow: '0 6px 16px rgba(0,0,0,0.15)' },
+    projectSection: { background: 'linear-gradient(135deg, #fff3e6, #ffd6b3)' },
+    visionSection: { background: 'linear-gradient(135deg, #ffe0c2, #ffb377)' },
+    teamSection: { background: 'linear-gradient(135deg, #ffd2a6, #ff9933)' },
+    partnersSection: { background: 'linear-gradient(135deg, #ffe6cc, #ff944d)' },
+    storiesSection: { background: 'linear-gradient(135deg, #fff0e6, #ff885c)' },
+    title: { fontSize: '30px', fontWeight: 'bold', marginBottom: '20px', color: '#eb7630' },
+    text: { fontSize: '17px', lineHeight: '1.7', marginBottom: '15px', color: '#333' },
+    cardContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' },
+    card: { 
+      background: '#fff4ee', padding: '20px', borderRadius: '12px', flex: '0 0 250px', maxWidth: '250px',
+      boxShadow: '0 4px 8px rgba(0,0,0,0.1)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'
+    },
+    cardImg: { width: '150px', height: '150px', objectFit: 'contain', borderRadius: '12px', marginBottom: '15px', transition: 'transform 0.3s, filter 0.3s', cursor: 'pointer' },
+    ctaSection: { background: 'linear-gradient(135deg, #eb7630, #ff5e42)', color: '#fff', textAlign: 'center', padding: '70px 20px', borderRadius: '16px', marginTop: '60px', boxShadow: '0 6px 16px rgba(0,0,0,0.2)' },
+    ctaTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' },
+    ctaText: { fontSize: '1.2rem', marginBottom: '30px', lineHeight: '1.6' },
+    button: { background: '#fff', color: '#eb7630', border: 'none', padding: '15px 35px', fontSize: '18px', fontWeight: '700', borderRadius: '50px', cursor: 'pointer', transition: 'all 0.3s ease' },
+  };
 
   return (
-    <div style={styles.container}>
-
+    <div>
       {/* Hero Section */}
       <section style={styles.hero}>
-        <div style={styles.heroContent}>
-          <h1 style={styles.fancyText}>
-            Empowering Communities<br />Through Education
-          </h1>
-          <img 
-            src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"} 
-            style={styles.mainLogo} 
-            alt="TEAch Volunteers" 
-          />
-        </div>
+        <h1 style={styles.heroTitle}> About Us</h1>
       </section>
 
-      {/* Who We Are Section */}
-      <section style={styles.aboutSection}>
-        <h2 style={styles.aboutTitle}>✨ Who We Are</h2>
-        <div style={styles.aboutBox}>
-          <p style={styles.aboutText}>
-            Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
-            <span style={styles.highlight}>TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the 
-            <span style={styles.highlight}> support</span>, 
-            <span style={styles.highlight}> confidence</span>, and 
-            <span style={styles.highlight}> hope</span> to succeed. <br />
-            Our mission: every child deserves the chance to 
-            <span style={styles.highlight}> learn</span>, 
-            <span style={styles.highlight}> grow</span>, and 
-            <span style={styles.highlight}> dream of a brighter future</span>.
+      <div style={styles.container}>
+        {/* Project Overview */}
+        <section style={{...styles.section, ...styles.projectSection}}>
+          <h2 style={styles.title}>📘 Project Overview</h2>
+          <p style={{fontWeight: '600', color: '#444', lineHeight: '2'}}>
+            Our initiative helps students in Sri Lanka’s tea plantation communities improve exam success by providing 
+            <strong style={{color: '#eb7630'}}> live digital classes </strong> for 
+            <strong style={{color: '#eb7630'}}> Grades 9-11 </strong> in 
+            <strong style={{color: '#eb7630'}}> English, Maths, and Science </strong> 📚.
           </p>
-        </div>
-      </section>
+          <p style={{fontWeight: '500', color: '#555', lineHeight: '1.9'}}>
+            Students gather in local hubs where lessons are streamed on large screens by 
+            <strong style={{color: '#eb7630'}}> qualified volunteer teachers </strong> 👩‍🏫. 
+          </p>
+          <p style={{fontWeight: '500', color: '#555', lineHeight: '1.9'}}>
+            The program serves <strong style={{color: '#eb7630'}}>10 communities</strong> in the Central Province over a minimum of 2 years. 
+            <strong style={{color: '#eb7630'}}> 30 volunteer teachers </strong> and 
+            <strong style={{color: '#eb7630'}}> 30 teaching assistants </strong> provide lesson notes, study guides, and support 📝.
+          </p>
+        </section>
 
-      {/* Video Section */}
-      <section style={styles.videoSection}>
-        <h2 style={styles.sectionTitle}>See Us In Action 🎥</h2>
-        <div style={styles.videoWrapper}>
-          <video
-            style={styles.video}
-            autoPlay
-            loop
-            muted={muted}
-            src={process.env.PUBLIC_URL + "/videos/video.mp4"}
-          />
-          <button style={styles.muteButton} onClick={toggleMute}>
-            {muted ? 'Unmute 🔊' : 'Mute 🔇'}
-          </button>
-        </div>
-      </section>
+        {/* Vision */}
+        <section style={{...styles.section, ...styles.visionSection}}>
+          <h2 style={styles.title}>🌍 Our Vision</h2>
+          <p style={styles.text}>With <strong style={{color:'#eb7630'}}>91% of estate families</strong> now having smartphone internet access, education is finally within reach.</p>
+          <p style={styles.text}>In partnership with <strong style={{color:'#eb7630'}}>World Vision Lanka</strong>, our first phase brings <strong style={{color:'#eb7630'}}>300+ students</strong> into live classes for Maths, English, and Science.</p>
+          <p style={styles.text}>These lessons help prepare students for their <strong style={{color:'#eb7630'}}>GCE O-Level exams</strong>, streamed directly into schools.</p>
+        </section>
 
-      {/* How It Works Section */}
-      <section style={styles.howItWorksSection}>
-        <h2 style={styles.sectionTitle}>How It Works</h2>
-        <div style={styles.stepContainer}>
-          {steps.map((step) => (
-            <div key={step.number} style={styles.stepCard}>
-              <div style={styles.stepIcon}>{step.icon}</div>
-              <div>
-                <div style={styles.stepNumber}>Step {step.number}</div>
-                <h3 style={styles.stepTitle}>{step.title}</h3>
-                <p style={styles.stepDescription}>{step.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Recognition Section */}
-      <section style={styles.recognitionSection}>
-        <h2 style={styles.sectionTitle}>🌟 TEAch Has Been Recognized By</h2>
-        <div style={styles.logoScroller}>
-          <div style={styles.logoTrack}>
-            {logos.concat(logos).map((logo, i) => (
-              <div key={i} style={styles.logoCard}>
-                <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={styles.logoImage} />
-                <p style={styles.logoName}>{logo.name}</p>
+        {/* Team */}
+        <section style={{...styles.section, ...styles.teamSection}}>
+          <h2 style={styles.title}>👩‍🏫 Meet the Team</h2>
+          <div style={styles.cardContainer}>
+            {team.map((member, index) => (
+              <div key={index} style={styles.card}>
+                <img src={member.img} alt={member.name} style={styles.cardImg} 
+                  onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
+                  onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
+                />
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
+        {/* Partners */}
+        <section style={{...styles.section, ...styles.partnersSection}}>
+          <h2 style={styles.title}>🤝 Our Partners</h2>
+          <div style={styles.cardContainer}>
+            {partners.map((partner, index) => (
+              <div key={index} style={styles.card}>
+                <img src={partner.img} alt={partner.name} style={styles.cardImg} 
+                  onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
+                  onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
+                />
+                <h3>{partner.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Success Stories */}
+        <section style={{...styles.section, ...styles.storiesSection}}>
+          <h2 style={styles.title}>🌟 Success Stories</h2>
+          <div style={styles.cardContainer}>
+            {stories.map((story, index) => (
+              <div key={index} style={styles.card}>
+                <img src={story.img} alt={story.student} style={{...styles.cardImg, width: '160px', height: '160px'}} 
+                  onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1.2)'; }}
+                  onMouseOut={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(1)'; }}
+                />
+                <p><strong>{story.student}</strong></p>
+                <p>{story.story}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section style={styles.ctaSection}>
+          <h2 style={styles.ctaTitle}>🚀 Join Us Now to Change Young Lives</h2>
+          <p style={styles.ctaText}>
+            Be part of a movement that empowers children with the gift of education. <br />
+            Your time, skills, and passion can open doors to a brighter tomorrow.
+          </p>
+          <button style={styles.button} onMouseOver={e => e.currentTarget.style.background = '#ffe0d1'} onMouseOut={e => e.currentTarget.style.background = '#fff'} onClick={() => window.location.href = "/signup"}>
+            Become a Volunteer
+          </button>
+        </section>
+      </div>
     </div>
   );
-}
-
-const styles = {
-  container: { fontFamily: 'Nunito, sans-serif', textAlign: 'center' },
-
-  hero: {
-    position: 'relative',
-    height: '60vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'linear-gradient(135deg, #ffa366, #eb7630)',
-    padding: '0 40px',
-  },
-  heroContent: { position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '40px', width: '100%', maxWidth: '1200px' },
-  mainLogo: { width: '220px', height: '220px', objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff', padding: '20px', zIndex: 2, position: 'relative' },
-  fancyText: { fontSize: '2.8rem', fontWeight: '800', textAlign: 'left', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: '1.2', maxWidth: '450px', zIndex: 2, flexShrink: 0, position: 'relative' },
-
-  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto', textAlign: 'center' },
-  aboutTitle: { fontSize: '2.6rem', fontWeight: '800', color: '#eb7630', marginBottom: '25px' },
-  aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '30px 20px' },
-  aboutText: { fontSize: '1.4rem', fontWeight: '600', lineHeight: '2', color: '#222' },
-  highlight: { color: '#eb7630', fontWeight: '800' },
-
-  videoSection: { padding: '30px 10px' },
-  sectionTitle: { fontSize: '2rem', marginBottom: '20px', color: '#eb7630' },
-  videoWrapper: { position: 'relative', display: 'inline-block', width: '80%', maxWidth: '800px' },
-  video: { width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' },
-  muteButton: { position: 'absolute', bottom: '10px', right: '10px', background: '#eb7630', border: 'none', padding: '8px 15px', color: '#fff', fontWeight: 'bold', borderRadius: '8px', cursor: 'pointer' },
-
-  // How It Works
-  howItWorksSection: { padding: '50px 20px' },
-  stepContainer: { display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '10px' },
-  stepCard: {
-    flex: '0 0 250px', 
-    display: 'flex',
-    gap: '15px',
-    padding: '20px',
-    borderRadius: '12px',
-    background: 'linear-gradient(135deg, #ffa366, #eb7630)',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-  },
-  stepIcon: { fontSize: '2.5rem' },
-  stepNumber: { fontWeight: '800', fontSize: '1.2rem', color: '#0e0d0dff' },
-  stepTitle: { fontSize: '1.4rem', fontWeight: '700', margin: '5px 0' },
-  stepDescription: { fontSize: '1rem', color: '#333' },
-
-  // Recognition Section
-  recognitionSection: { padding: '50px 20px', background: '#fff7f2' },
-  logoScroller: { overflow: 'hidden', width: '100%' },
-  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
-  logoCard: { flex: '0 0 auto', margin: '0 30px', textAlign: 'center' },
-  logoImage: { height: '80px', objectFit: 'contain' },
-  logoName: { marginTop: '8px', fontSize: '0.9rem', color: '#333' },
 };
 
-// Add keyframes dynamically
-const styleSheet = document.styleSheets[0];
-const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`;
-styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-
-export default Home;
+export default About;
