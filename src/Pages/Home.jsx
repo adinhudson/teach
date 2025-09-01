@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Home() {
   const [muted, setMuted] = useState(true);
@@ -16,6 +16,13 @@ function Home() {
     { src: "/brands/sussex.png", name: "University of Sussex" },
     { src: "/brands/world_vision_lanka.jpg", name: "World Vision Lanka" },
   ];
+
+  // Inject keyframes for logo scroll
+  useEffect(() => {
+    const styleSheet = document.styleSheets[0];
+    const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`;
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -117,20 +124,28 @@ function Home() {
 const styles = {
   container: { fontFamily: 'Nunito, sans-serif', textAlign: 'center' },
 
+  // Hero
   hero: {
-    position: 'relative',
-    height: '60vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    minHeight: '60vh',
     background: 'linear-gradient(135deg, #ffa366, #eb7630)',
-    padding: '0 40px',
+    padding: '0 20px',
   },
-  heroContent: { position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '40px', width: '100%', maxWidth: '1200px' },
-  mainLogo: { width: '220px', height: '220px', objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff', padding: '20px', zIndex: 2, position: 'relative' },
-  fancyText: { fontSize: '2.8rem', fontWeight: '800', textAlign: 'left', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: '1.2', maxWidth: '450px', zIndex: 2, flexShrink: 0, position: 'relative' },
+  heroContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '40px',
+    maxWidth: '1000px',
+    width: '100%',
+  },
+  mainLogo: { width: '220px', objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff', padding: '20px' },
+  fancyText: { fontSize: '2.8rem', fontWeight: '800', lineHeight: '1.2', textAlign: 'left', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '450px' },
 
-  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto', textAlign: 'center' },
+  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto' },
   aboutTitle: { fontSize: '2.6rem', fontWeight: '800', color: '#eb7630', marginBottom: '25px' },
   aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '30px 20px' },
   aboutText: { fontSize: '1.4rem', fontWeight: '600', lineHeight: '2', color: '#222' },
@@ -144,15 +159,7 @@ const styles = {
 
   howItWorksSection: { padding: '50px 20px' },
   stepContainer: { display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '10px' },
-  stepCard: {
-    flex: '0 0 250px', 
-    display: 'flex',
-    gap: '15px',
-    padding: '20px',
-    borderRadius: '12px',
-    background: 'linear-gradient(135deg, #ffa366, #eb7630)',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-  },
+  stepCard: { flex: '0 0 250px', display: 'flex', gap: '15px', padding: '20px', borderRadius: '12px', background: 'linear-gradient(135deg, #ffa366, #eb7630)', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
   stepIcon: { fontSize: '2.5rem' },
   stepNumber: { fontWeight: '800', fontSize: '1.2rem', color: '#0e0d0dff' },
   stepTitle: { fontSize: '1.4rem', fontWeight: '700', margin: '5px 0' },
@@ -168,20 +175,24 @@ const styles = {
   volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff', textAlign: 'center' },
   volunteerTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' },
   volunteerText: { fontSize: '1.3rem', marginBottom: '30px', fontWeight: '600' },
-  volunteerButton: {
-    background: '#fff',
-    color: '#eb7630',
-    fontWeight: '800',
-    padding: '12px 30px',
-    borderRadius: '8px',
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-    transition: '0.3s',
+  volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', padding: '12px 30px', borderRadius: '8px', textDecoration: 'none', fontSize: '1.2rem', transition: '0.3s' },
+
+  // Mobile styles
+  '@media (max-width: 768px)': {
+    hero: { flexDirection: 'column', padding: '20px 10px' },
+    heroContent: { flexDirection: 'column', gap: '20px' },
+    fancyText: { fontSize: '2rem', textAlign: 'center', maxWidth: '90%' },
+    mainLogo: { width: '150px', padding: '15px' },
+    aboutText: { fontSize: '1.1rem', lineHeight: '1.6' },
+    sectionTitle: { fontSize: '1.6rem' },
+    stepCard: { flex: '0 0 200px', gap: '10px', padding: '15px' },
+    stepTitle: { fontSize: '1.2rem' },
+    stepDescription: { fontSize: '0.9rem' },
+    logoImage: { height: '60px' },
+    volunteerTitle: { fontSize: '2rem' },
+    volunteerText: { fontSize: '1.1rem' },
+    volunteerButton: { fontSize: '1rem', padding: '10px 20px' },
   },
 };
-
-const styleSheet = document.styleSheets[0];
-const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`;
-styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
 export default Home;
