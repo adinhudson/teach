@@ -2,7 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 function Home() {
   const [muted, setMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   const toggleMute = () => setMuted(!muted);
+
+  // Responsive listener
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const steps = [
     { number: 1, title: 'Sign Up', description: 'Students and volunteers create accounts with TEAch using their email or social login. It only takes a few minutes.', icon: '👤' },
@@ -20,23 +29,45 @@ function Home() {
   // Inject keyframes for logo scroll
   useEffect(() => {
     const styleSheet = document.styleSheets[0];
-    const keyframes = `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`;
-    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    if (styleSheet) {
+      const keyframes = `@keyframes scroll { 
+        0% { transform: translateX(0); } 
+        100% { transform: translateX(-50%); } 
+      }`;
+      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    }
   }, []);
 
   return (
     <div style={styles.container}>
 
       {/* Hero Section */}
-      <section style={styles.hero}>
-        <div style={styles.heroContent}>
-          <h1 style={styles.fancyText}>
+      <section style={{
+        ...styles.hero,
+        flexDirection: isMobile ? "column" : "row",
+        padding: isMobile ? "30px 15px" : "60px 20px",
+        textAlign: isMobile ? "center" : "left"
+      }}>
+        <div style={{
+          ...styles.heroContent,
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "20px" : "40px"
+        }}>
+          <h1 style={{
+            ...styles.fancyText,
+            fontSize: isMobile ? "2rem" : "3rem",
+            maxWidth: isMobile ? "100%" : "480px"
+          }}>
             Empowering Communities<br />Through Education
           </h1>
-          <img 
-            src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"} 
-            style={styles.mainLogo} 
-            alt="TEAch Volunteers" 
+          <img
+            src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"}
+            style={{
+              ...styles.mainLogo,
+              width: isMobile ? "140px" : "220px",
+              marginTop: isMobile ? "15px" : "0"
+            }}
+            alt="TEAch Volunteers"
           />
         </div>
       </section>
@@ -45,15 +76,19 @@ function Home() {
       <section style={styles.aboutSection}>
         <h2 style={styles.aboutTitle}>✨ Who We Are</h2>
         <div style={styles.aboutBox}>
-          <p style={styles.aboutText}>
+          <p style={{
+            ...styles.aboutText,
+            fontSize: isMobile ? "1rem" : "1.3rem",
+            lineHeight: isMobile ? "1.6" : "1.9"
+          }}>
             Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
-            <span style={styles.highlight}>TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the 
-            <span style={styles.highlight}> support</span>, 
-            <span style={styles.highlight}> confidence</span>, and 
+            <span style={styles.highlight}>TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
+            <span style={styles.highlight}> support</span>,
+            <span style={styles.highlight}> confidence</span>, and
             <span style={styles.highlight}> hope</span> to succeed. <br />
-            Our mission: every child deserves the chance to 
-            <span style={styles.highlight}> learn</span>, 
-            <span style={styles.highlight}> grow</span>, and 
+            Our mission: every child deserves the chance to
+            <span style={styles.highlight}> learn</span>,
+            <span style={styles.highlight}> grow</span>, and
             <span style={styles.highlight}> dream of a brighter future</span>.
           </p>
         </div>
@@ -61,7 +96,9 @@ function Home() {
 
       {/* Video Section */}
       <section style={styles.videoSection}>
-        <h2 style={styles.sectionTitle}>See Us In Action 🎥</h2>
+        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>
+          See Us In Action 🎥
+        </h2>
         <div style={styles.videoWrapper}>
           <video
             style={styles.video}
@@ -78,15 +115,30 @@ function Home() {
 
       {/* How It Works Section */}
       <section style={styles.howItWorksSection}>
-        <h2 style={styles.sectionTitle}>How It Works</h2>
-        <div style={styles.stepContainer}>
+        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>How It Works</h2>
+        <div style={{
+          ...styles.stepContainer,
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: isMobile ? "center" : "flex-start"
+        }}>
           {steps.map((step) => (
-            <div key={step.number} style={styles.stepCard}>
+            <div key={step.number} style={{
+              ...styles.stepCard,
+              width: isMobile ? "90%" : "220px",
+              padding: isMobile ? "15px" : "20px",
+              marginBottom: isMobile ? "15px" : "0"
+            }}>
               <div style={styles.stepIcon}>{step.icon}</div>
               <div>
                 <div style={styles.stepNumber}>Step {step.number}</div>
-                <h3 style={styles.stepTitle}>{step.title}</h3>
-                <p style={styles.stepDescription}>{step.description}</p>
+                <h3 style={{
+                  ...styles.stepTitle,
+                  fontSize: isMobile ? "1.1rem" : "1.3rem"
+                }}>{step.title}</h3>
+                <p style={{
+                  ...styles.stepDescription,
+                  fontSize: isMobile ? "0.95rem" : "1rem"
+                }}>{step.description}</p>
               </div>
             </div>
           ))}
@@ -95,12 +147,15 @@ function Home() {
 
       {/* Recognition Section */}
       <section style={styles.recognitionSection}>
-        <h2 style={styles.sectionTitle}>🌟 TEAch Has Been Recognized By</h2>
+        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>🌟 TEAch Has Been Recognized By</h2>
         <div style={styles.logoScroller}>
           <div style={styles.logoTrack}>
             {logos.concat(logos).map((logo, i) => (
               <div key={i} style={styles.logoCard}>
-                <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={styles.logoImage} />
+                <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={{
+                  ...styles.logoImage,
+                  height: isMobile ? "50px" : "80px"
+                }} />
                 <p style={styles.logoName}>{logo.name}</p>
               </div>
             ))}
@@ -110,11 +165,19 @@ function Home() {
 
       {/* Become a Volunteer Section */}
       <section style={styles.volunteerSection}>
-        <h2 style={styles.volunteerTitle}>✨ Join Us Now – Change Young Lives Forever ✨</h2>
-        <p style={styles.volunteerText}>
+        <h2 style={{ ...styles.volunteerTitle, fontSize: isMobile ? "1.8rem" : "2.4rem" }}>
+          ✨ Join Us Now – Change Young Lives Forever ✨
+        </h2>
+        <p style={{ ...styles.volunteerText, fontSize: isMobile ? "1rem" : "1.2rem" }}>
           Give just <span style={styles.highlight}>2 hours a week</span> and help empower the next generation to dream, learn, and achieve.
         </p>
-        <a href="/signup" style={styles.volunteerButton}>Become a Volunteer</a>
+        <a href="/signup" style={{
+          ...styles.volunteerButton,
+          fontSize: isMobile ? "1rem" : "1.2rem",
+          padding: isMobile ? "10px 20px" : "12px 30px"
+        }}>
+          Become a Volunteer
+        </a>
       </section>
 
     </div>
@@ -129,70 +192,43 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
-    minHeight: '60vh',
     background: 'linear-gradient(135deg, #ffa366, #eb7630)',
-    padding: '0 20px',
   },
-  heroContent: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '40px',
-    maxWidth: '1000px',
-    width: '100%',
-  },
-  mainLogo: { width: '220px', objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff', padding: '20px' },
-  fancyText: { fontSize: '2.8rem', fontWeight: '800', lineHeight: '1.2', textAlign: 'left', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', maxWidth: '450px' },
+  heroContent: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' },
+  mainLogo: { objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff' },
+  fancyText: { fontWeight: '800', lineHeight: '1.2', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
 
   aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto' },
-  aboutTitle: { fontSize: '2.6rem', fontWeight: '800', color: '#eb7630', marginBottom: '25px' },
-  aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '30px 20px' },
-  aboutText: { fontSize: '1.4rem', fontWeight: '600', lineHeight: '2', color: '#222' },
+  aboutTitle: { fontSize: '2.3rem', fontWeight: '800', color: '#eb7630', marginBottom: '20px' },
+  aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '25px 20px' },
+  aboutText: { fontWeight: '600', color: '#222' },
   highlight: { color: '#eb7630', fontWeight: '800' },
 
   videoSection: { padding: '30px 10px' },
-  sectionTitle: { fontSize: '2rem', marginBottom: '20px', color: '#eb7630' },
-  videoWrapper: { position: 'relative', display: 'inline-block', width: '80%', maxWidth: '800px' },
+  sectionTitle: { marginBottom: '20px', color: '#eb7630' },
+  videoWrapper: { position: 'relative', display: 'inline-block', width: '90%', maxWidth: '700px' },
   video: { width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' },
   muteButton: { position: 'absolute', bottom: '10px', right: '10px', background: '#eb7630', border: 'none', padding: '8px 15px', color: '#fff', fontWeight: 'bold', borderRadius: '8px', cursor: 'pointer' },
 
   howItWorksSection: { padding: '50px 20px' },
-  stepContainer: { display: 'flex', gap: '20px', overflowX: 'auto', paddingBottom: '10px' },
-  stepCard: { flex: '0 0 250px', display: 'flex', gap: '15px', padding: '20px', borderRadius: '12px', background: 'linear-gradient(135deg, #ffa366, #eb7630)', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
-  stepIcon: { fontSize: '2.5rem' },
-  stepNumber: { fontWeight: '800', fontSize: '1.2rem', color: '#0e0d0dff' },
-  stepTitle: { fontSize: '1.4rem', fontWeight: '700', margin: '5px 0' },
-  stepDescription: { fontSize: '1rem', color: '#333' },
+  stepContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' },
+  stepCard: { display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '12px', background: 'linear-gradient(135deg, #ffa366, #eb7630)', color: '#fff', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
+  stepIcon: { fontSize: '2.5rem', marginBottom: '10px' },
+  stepNumber: { fontWeight: '800', fontSize: '1.1rem' },
+  stepTitle: { fontWeight: '700', margin: '5px 0' },
+  stepDescription: { color: '#fff' },
 
   recognitionSection: { padding: '50px 20px', background: '#fff7f2' },
   logoScroller: { overflow: 'hidden', width: '100%' },
   logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
-  logoCard: { flex: '0 0 auto', margin: '0 30px', textAlign: 'center' },
-  logoImage: { height: '80px', objectFit: 'contain' },
-  logoName: { marginTop: '8px', fontSize: '0.9rem', color: '#333' },
+  logoCard: { flex: '0 0 auto', margin: '0 25px', textAlign: 'center' },
+  logoImage: { objectFit: 'contain' },
+  logoName: { marginTop: '6px', fontSize: '0.85rem', color: '#333' },
 
-  volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff', textAlign: 'center' },
-  volunteerTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' },
-  volunteerText: { fontSize: '1.3rem', marginBottom: '30px', fontWeight: '600' },
-  volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', padding: '12px 30px', borderRadius: '8px', textDecoration: 'none', fontSize: '1.2rem', transition: '0.3s' },
-
-  // Mobile styles
-  '@media (max-width: 768px)': {
-    hero: { flexDirection: 'column', padding: '20px 10px' },
-    heroContent: { flexDirection: 'column', gap: '20px' },
-    fancyText: { fontSize: '2rem', textAlign: 'center', maxWidth: '90%' },
-    mainLogo: { width: '150px', padding: '15px' },
-    aboutText: { fontSize: '1.1rem', lineHeight: '1.6' },
-    sectionTitle: { fontSize: '1.6rem' },
-    stepCard: { flex: '0 0 200px', gap: '10px', padding: '15px' },
-    stepTitle: { fontSize: '1.2rem' },
-    stepDescription: { fontSize: '0.9rem' },
-    logoImage: { height: '60px' },
-    volunteerTitle: { fontSize: '2rem' },
-    volunteerText: { fontSize: '1.1rem' },
-    volunteerButton: { fontSize: '1rem', padding: '10px 20px' },
-  },
+  volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff' },
+  volunteerTitle: { fontWeight: '800', marginBottom: '20px' },
+  volunteerText: { marginBottom: '25px', fontWeight: '600' },
+  volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', borderRadius: '8px', textDecoration: 'none', transition: '0.3s' },
 };
 
 export default Home;
