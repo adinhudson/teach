@@ -32,8 +32,8 @@ function Navbar() {
       >
         <li><Link to="/" style={styles.link}>Home</Link></li>
         <li><Link to="/about" style={styles.link}>About Us</Link></li>
+        <li><Link to="/contact" style={styles.link}>Contact Us</Link></li>
         <li><Link to="/volunteer" style={styles.link}>Volunteer Sign-Up</Link></li>
-        <li><Link to="/contact" style={styles.link}>contact us</Link></li>
       </ul>
     </nav>
   );
