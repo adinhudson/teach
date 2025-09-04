@@ -1,6 +1,6 @@
 {
   "name": "teach",
-  "homepage": "https://teachlk.com",
+  "homepage": "https://www.teachlk.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
+  "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
