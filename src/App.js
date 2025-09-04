@@ -10,8 +10,23 @@ import VolunteerSignup from './Pages/Volunteer_signup';
 //import Volunteer from "./pages/Volunteer";
 
 function App() {
+  // Compute a basename from PUBLIC_URL so the app works when deployed
+  // at the site root (e.g. https://www.teachlk.com) or a subpath
+  // (e.g. https://username.github.io/teach)
+  let basename;
+  if (process.env.PUBLIC_URL) {
+    try {
+      const url = new URL(process.env.PUBLIC_URL);
+      // Use pathname as basename; if it's just '/', leave undefined
+      basename = url.pathname === '/' ? undefined : url.pathname.replace(/\/$/, '');
+    } catch (e) {
+      // If PUBLIC_URL is not a full URL, use it directly
+      basename = process.env.PUBLIC_URL === '/' ? undefined : process.env.PUBLIC_URL.replace(/\/$/, '');
+    }
+  }
+
   return (
-    <Router basename="/teach">
+    <Router basename={basename}>
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
