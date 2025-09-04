@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,19 +10,38 @@ const Contact = () => {
     message: ''
   });
 
+  const formRef = useRef();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Form submitted! (Implement API/email service)');
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_CONTACT_TEMPLATE_ID,
+        formRef.current,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          alert('✅ Your message has been sent!');
+          setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
+        },
+        (error) => {
+          alert('❌ Something went wrong. Please try again.');
+          console.error(error.text);
+        }
+      );
   };
 
   const styles = {
     hero: {
       width: '100%',
-      background: 'linear-gradient(135deg, #ff8c42, #ffb166)',
+      background: 'linear-gradient(135deg, #ffa366, #eb7630)',
       padding: '60px 20px',
       textAlign: 'center',
       color: '#fff',
@@ -77,7 +97,7 @@ const Contact = () => {
         {/* Contact Form */}
         <section style={styles.section}>
           <h2 style={styles.title}>✉ Send a Message</h2>
-          <form style={styles.form} onSubmit={handleSubmit}>
+          <form ref={formRef} style={styles.form} onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Name (Required)" required style={styles.input} value={formData.name} onChange={handleChange} />
             <input type="email" name="email" placeholder="Email Address (Required)" required style={styles.input} value={formData.email} onChange={handleChange} />
             <input type="text" name="subject" placeholder="Subject (Required)" required style={styles.input} value={formData.subject} onChange={handleChange} />

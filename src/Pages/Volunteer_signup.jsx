@@ -32,7 +32,6 @@ const VolunteerSignup = () => {
         formRef.current,
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
-
       .then(
         (result) => {
           alert("🎉 Thank you for signing up as a volunteer!");
@@ -57,7 +56,7 @@ const VolunteerSignup = () => {
   const styles = {
     hero: {
       width: "100%",
-      background: "linear-gradient(135deg, #ff8c42, #ffb166)",
+      background: "linear-gradient(135deg, #ffa366, #eb7630)",
       padding: "60px 20px",
       textAlign: "center",
       color: "#fff",
@@ -162,21 +161,33 @@ const VolunteerSignup = () => {
         <section style={{ ...styles.section, ...styles.whySection }}>
           <h2 style={styles.title}>🌟 Why Volunteer?</h2>
           <div style={styles.cardContainer}>
-            <div style={styles.card}>📚 Help disadvantaged students succeed in school</div>
-            <div style={styles.card}>🌍 Make education more accessible in Sri Lanka</div>
-            <div style={styles.card}>🤝 Join a passionate community of volunteers</div>
+            <div style={styles.card}>
+              📚 <strong>Empower Young Minds</strong><br/>
+              Help students overcome challenges and succeed academically.
+            </div>
+            <div style={styles.card}>
+              🌍 <strong>Create Opportunities</strong><br/>
+              Support education in Sri Lanka and open doors for children who need guidance.
+            </div>
+            <div style={styles.card}>
+              🤝 <strong>Join a Community</strong><br/>
+              Connect with like-minded volunteers passionate about teaching and giving back.
+            </div>
           </div>
         </section>
 
         {/* Requirements */}
         <section style={{ ...styles.section, ...styles.requirementsSection }}>
-          <h2 style={styles.title}>✅ Requirements</h2>
+          <h2 style={styles.title}>✅ What We Look For</h2>
           <ul style={styles.text}>
-            <li>Commit at least <strong>2 hours per week</strong></li>
-            <li>Internet connection and a device for online sessions</li>
-            <li>Comfortable teaching English, Maths, or Science</li>
-            <li>Successfully passed a <strong>background check</strong></li>
+            <li>✅ Commit just <strong>2 hours per week</strong> to make a lasting impact</li>
+            <li>✅ Access to a device and internet for online sessions</li>
+            <li>✅ Comfortable teaching English, Maths, or Science</li>
+            <li>✅ Successfully passed a <strong>background check</strong> to ensure student safety</li>
           </ul>
+          <p style={styles.text}>
+            If you’re passionate, patient, and excited to inspire the next generation, you’re exactly who we’re looking for!
+          </p>
         </section>
 
         {/* Sign-Up Form */}
@@ -189,10 +200,7 @@ const VolunteerSignup = () => {
             <input type="text" name="experience" placeholder="Teaching Experience (Yes/No)" value={form.experience} onChange={handleChange} style={styles.input} />
             <input type="text" name="availability" placeholder="Availability (e.g., Mon/Wed evenings)" value={form.availability} onChange={handleChange} style={styles.input} />
             <textarea name="motivation" placeholder="Why do you want to volunteer?" value={form.motivation} onChange={handleChange} style={styles.textarea} required></textarea>
-            <label>
-              <input type="checkbox" name="backgroundCheck" checked={form.backgroundCheck} onChange={handleChange} style={styles.checkbox} required />
-              I confirm I have passed a background check
-            </label>
+            
             <button type="submit" style={styles.button}>Submit Application</button>
           </form>
         </section>

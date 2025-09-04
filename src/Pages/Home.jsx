@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+
 
 function Home() {
   const [muted, setMuted] = useState(true);
@@ -171,13 +173,17 @@ function Home() {
         <p style={{ ...styles.volunteerText, fontSize: isMobile ? "1rem" : "1.2rem" }}>
           Give just <span style={styles.highlight}>2 hours a week</span> and help empower the next generation to dream, learn, and achieve.
         </p>
-        <a href="/signup" style={{
-          ...styles.volunteerButton,
-          fontSize: isMobile ? "1rem" : "1.2rem",
-          padding: isMobile ? "10px 20px" : "12px 30px"
-        }}>
-          Become a Volunteer
-        </a>
+      <Link 
+  to="/volunteer" 
+  style={{
+    ...styles.volunteerButton,
+    fontSize: isMobile ? "1rem" : "1.2rem",
+    padding: isMobile ? "10px 20px" : "12px 30px"
+  }}
+>
+  Become a Volunteer
+</Link>
+
       </section>
 
     </div>

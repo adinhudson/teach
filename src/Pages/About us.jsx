@@ -23,7 +23,7 @@ const About = () => {
   const styles = {
     hero: {
       width: '100%',
-      background: 'linear-gradient(135deg, #ff8c42, #ffb166)',
+      background: 'linear-gradient(135deg, #ffa366, #eb7630)',
       padding: '60px 20px',
       textAlign: 'center',
       color: '#fff',
