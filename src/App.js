@@ -1,8 +1,8 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
-import About from './Pages/About us';
-import Contact from './Pages/contact us';
+import About from './Pages/AboutUs';
+import Contact from './Pages/ContactUs';
 import VolunteerSignup from './Pages/Volunteer_signup';
 
 //import Footer from "./components/Footer";

@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Close mobile menu when a link is clicked
+  const handleLinkClick = () => {
+    if (isMobile) setIsOpen(false);
+  };
 
   return (
     <nav style={styles.navbar}>
@@ -10,30 +23,36 @@ function Navbar() {
       <div style={styles.logoContainer}>
         <img
           src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"}
-          alt="TEACH Volunteers"
+          alt="TEAch Volunteers"
           style={styles.logoImage}
         />
       </div>
 
       {/* Hamburger button (mobile only) */}
-      <button
-        style={styles.hamburger}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        ☰
-      </button>
+      {isMobile && (
+        <button
+          style={styles.hamburger}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
+      )}
 
       {/* Links */}
       <ul
         style={{
           ...styles.navLinks,
-          ...(isOpen ? styles.showMenu : styles.hideMenu),
+          ...(isMobile
+            ? isOpen
+              ? styles.showMenu
+              : styles.hideMenu
+            : {}),
         }}
       >
-        <li><Link to="/" style={styles.link}>Home</Link></li>
-        <li><Link to="/about" style={styles.link}>About Us</Link></li>
-        <li><Link to="/contact" style={styles.link}>Contact Us</Link></li>
-        <li><Link to="/volunteer" style={styles.link}>Volunteer Sign-Up</Link></li>
+        <li><Link to="/" style={styles.link} onClick={handleLinkClick}>Home</Link></li>
+        <li><Link to="/about" style={styles.link} onClick={handleLinkClick}>About Us</Link></li>
+        <li><Link to="/contact" style={styles.link} onClick={handleLinkClick}>Contact Us</Link></li>
+        <li><Link to="/volunteer" style={styles.link} onClick={handleLinkClick}>Volunteer Sign-Up</Link></li>
       </ul>
     </nav>
   );
@@ -47,7 +66,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 20px",
-    background: "linear-gradient(90deg, #ffa366, #eb7630)",
+    background: "linear-gradient(90deg, #eb7630, #eb7630)",
     zIndex: 1000,
   },
   logoContainer: {
@@ -66,6 +85,8 @@ const styles = {
     display: "flex",
     gap: "15px",
     transition: "all 0.3s ease",
+    margin: 0,
+    padding: 0,
   },
   link: {
     textDecoration: "none",
@@ -78,10 +99,9 @@ const styles = {
     border: "none",
     color: "#fff",
     cursor: "pointer",
-    display: "none", // hidden by default (desktop)
   },
   hideMenu: {
-    display: "flex",
+    display: "none",
   },
   showMenu: {
     display: "flex",
@@ -92,26 +112,8 @@ const styles = {
     background: "#eb7630",
     padding: "10px",
     borderRadius: "8px",
+    gap: "10px",
   },
 };
-
-// Responsive styling with media queries
-const mediaQuery = `
-  @media (max-width: 768px) {
-    ul {
-      display: none;
-    }
-    button {
-      display: block !important;
-    }
-  }
-`;
-
-// Inject media query into the document
-if (typeof document !== "undefined") {
-  const styleSheet = document.createElement("style");
-  styleSheet.innerText = mediaQuery;
-  document.head.appendChild(styleSheet);
-}
 
 export default Navbar;

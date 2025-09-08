@@ -56,7 +56,7 @@ const VolunteerSignup = () => {
   const styles = {
     hero: {
       width: "100%",
-      background: "linear-gradient(135deg, #ffa366, #eb7630)",
+      background: "linear-gradient(135deg, #eb7630, #eb7630)",
       padding: "60px 20px",
       textAlign: "center",
       color: "#fff",

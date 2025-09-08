@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-
 function Home() {
   const [muted, setMuted] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -28,17 +27,8 @@ function Home() {
     { src: "/brands/world_vision_lanka.jpg", name: "World Vision Lanka" },
   ];
 
-  // Inject keyframes for logo scroll
-  useEffect(() => {
-    const styleSheet = document.styleSheets[0];
-    if (styleSheet) {
-      const keyframes = `@keyframes scroll { 
-        0% { transform: translateX(0); } 
-        100% { transform: translateX(-50%); } 
-      }`;
-      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-    }
-  }, []);
+  // We’ll duplicate logos once in JSX (instead of JS logic)
+  const repeatedLogos = [...logos, ...logos];
 
   return (
     <div style={styles.container}>
@@ -46,9 +36,8 @@ function Home() {
       {/* Hero Section */}
       <section style={{
         ...styles.hero,
-        flexDirection: isMobile ? "column" : "row",
         padding: isMobile ? "30px 15px" : "60px 20px",
-        textAlign: isMobile ? "center" : "left"
+        textAlign: "center"
       }}>
         <div style={{
           ...styles.heroContent,
@@ -71,6 +60,19 @@ function Home() {
             }}
             alt="TEAch Volunteers"
           />
+        </div>
+
+        <div style={{ marginTop: "30px" }}>
+          <Link 
+            to="/volunteer" 
+            style={{
+              ...styles.volunteerButton,
+              fontSize: isMobile ? "1rem" : "1.2rem",
+              padding: isMobile ? "10px 20px" : "12px 30px"
+            }}
+          >
+            Become a Volunteer
+          </Link>
         </div>
       </section>
 
@@ -121,17 +123,19 @@ function Home() {
         <div style={{
           ...styles.stepContainer,
           flexDirection: isMobile ? "column" : "row",
-          alignItems: isMobile ? "center" : "flex-start"
+          alignItems: 'stretch',
         }}>
           {steps.map((step) => (
             <div key={step.number} style={{
               ...styles.stepCard,
-              width: isMobile ? "90%" : "220px",
+              flex: 1,
               padding: isMobile ? "15px" : "20px",
-              marginBottom: isMobile ? "15px" : "0"
+              marginBottom: isMobile ? "15px" : "0",
+              display: 'flex',
+              flexDirection: 'column',
             }}>
               <div style={styles.stepIcon}>{step.icon}</div>
-              <div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={styles.stepNumber}>Step {step.number}</div>
                 <h3 style={{
                   ...styles.stepTitle,
@@ -139,7 +143,8 @@ function Home() {
                 }}>{step.title}</h3>
                 <p style={{
                   ...styles.stepDescription,
-                  fontSize: isMobile ? "0.95rem" : "1rem"
+                  fontSize: isMobile ? "0.95rem" : "1rem",
+                  marginTop: 'auto'
                 }}>{step.description}</p>
               </div>
             </div>
@@ -152,7 +157,7 @@ function Home() {
         <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>🌟 TEAch Has Been Recognized By</h2>
         <div style={styles.logoScroller}>
           <div style={styles.logoTrack}>
-            {logos.concat(logos).map((logo, i) => (
+            {repeatedLogos.map((logo, i) => (
               <div key={i} style={styles.logoCard}>
                 <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={{
                   ...styles.logoImage,
@@ -173,17 +178,16 @@ function Home() {
         <p style={{ ...styles.volunteerText, fontSize: isMobile ? "1rem" : "1.2rem" }}>
           Give just <span style={styles.highlight}>2 hours a week</span> and help empower the next generation to dream, learn, and achieve.
         </p>
-      <Link 
-  to="/volunteer" 
-  style={{
-    ...styles.volunteerButton,
-    fontSize: isMobile ? "1rem" : "1.2rem",
-    padding: isMobile ? "10px 20px" : "12px 30px"
-  }}
->
-  Become a Volunteer
-</Link>
-
+        <Link 
+          to="/volunteer" 
+          style={{
+            ...styles.volunteerButton,
+            fontSize: isMobile ? "1rem" : "1.2rem",
+            padding: isMobile ? "10px 20px" : "12px 30px"
+          }}
+        >
+          Become a Volunteer
+        </Link>
       </section>
 
     </div>
@@ -193,30 +197,32 @@ function Home() {
 const styles = {
   container: { fontFamily: 'Nunito, sans-serif', textAlign: 'center' },
 
-  // Hero
   hero: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, #ffa366, #eb7630)',
+    background: 'linear-gradient(135deg, #eb7630, #eb7630)',
+    position: 'relative',
+    zIndex: 1,
   },
   heroContent: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' },
   mainLogo: { objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff' },
   fancyText: { fontWeight: '800', lineHeight: '1.2', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
 
-  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto' },
+  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto', position: 'relative', zIndex: 1 },
   aboutTitle: { fontSize: '2.3rem', fontWeight: '800', color: '#eb7630', marginBottom: '20px' },
   aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '25px 20px' },
   aboutText: { fontWeight: '600', color: '#222' },
   highlight: { color: '#eb7630', fontWeight: '800' },
 
-  videoSection: { padding: '30px 10px' },
+  videoSection: { padding: '30px 10px', position: 'relative', zIndex: 1 },
   sectionTitle: { marginBottom: '20px', color: '#eb7630' },
-  videoWrapper: { position: 'relative', display: 'inline-block', width: '90%', maxWidth: '700px' },
+  videoWrapper: { position: 'relative', display: 'inline-block', width: '90%', maxWidth: '700px', zIndex: 1 },
   video: { width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' },
   muteButton: { position: 'absolute', bottom: '10px', right: '10px', background: '#eb7630', border: 'none', padding: '8px 15px', color: '#fff', fontWeight: 'bold', borderRadius: '8px', cursor: 'pointer' },
 
-  howItWorksSection: { padding: '50px 20px' },
+  howItWorksSection: { padding: '50px 20px', position: 'relative', zIndex: 1 },
   stepContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' },
   stepCard: { display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '12px', background: 'linear-gradient(135deg, #ffa366, #eb7630)', color: '#fff', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
   stepIcon: { fontSize: '2.5rem', marginBottom: '10px' },
@@ -224,17 +230,31 @@ const styles = {
   stepTitle: { fontWeight: '700', margin: '5px 0' },
   stepDescription: { color: '#fff' },
 
-  recognitionSection: { padding: '50px 20px', background: '#fff7f2' },
+  recognitionSection: { padding: '50px 20px', background: '#fff7f2', position: 'relative', zIndex: 1 },
   logoScroller: { overflow: 'hidden', width: '100%' },
-  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
+  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 60s linear infinite' },
   logoCard: { flex: '0 0 auto', margin: '0 25px', textAlign: 'center' },
   logoImage: { objectFit: 'contain' },
   logoName: { marginTop: '6px', fontSize: '0.85rem', color: '#333' },
 
-  volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff' },
+  volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff', position: 'relative', zIndex: 1 },
   volunteerTitle: { fontWeight: '800', marginBottom: '20px' },
   volunteerText: { marginBottom: '25px', fontWeight: '600' },
   volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', borderRadius: '8px', textDecoration: 'none', transition: '0.3s' },
 };
+
+// Inject keyframes once globally (outside React components)
+const styleSheet = document.styleSheets[0];
+if (styleSheet) {
+  const keyframes = `
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  `;
+  if (![...styleSheet.cssRules].some(rule => rule.name === "scroll")) {
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+  }
+}
 
 export default Home;
