@@ -1,0 +1,20 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroller {
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content; /* important to prevent shrinking */
+  animation: scroll 30s linear infinite;
+}

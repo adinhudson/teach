@@ -27,8 +27,8 @@ function Home() {
     { src: "/brands/world_vision_lanka.jpg", name: "World Vision Lanka" },
   ];
 
-  // We’ll duplicate logos once in JSX (instead of JS logic)
-  const repeatedLogos = [...logos, ...logos];
+  // Repeat logos 4 times so we never see the "end"
+  const repeatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
     <div style={styles.container}>
@@ -232,7 +232,7 @@ const styles = {
 
   recognitionSection: { padding: '50px 20px', background: '#fff7f2', position: 'relative', zIndex: 1 },
   logoScroller: { overflow: 'hidden', width: '100%' },
-  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 60s linear infinite' },
+  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
   logoCard: { flex: '0 0 auto', margin: '0 25px', textAlign: 'center' },
   logoImage: { objectFit: 'contain' },
   logoName: { marginTop: '6px', fontSize: '0.85rem', color: '#333' },
@@ -243,13 +243,13 @@ const styles = {
   volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', borderRadius: '8px', textDecoration: 'none', transition: '0.3s' },
 };
 
-// Inject keyframes once globally (outside React components)
+// Inject keyframes globally
 const styleSheet = document.styleSheets[0];
 if (styleSheet) {
   const keyframes = `
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-25%); } /* scrolls through 1 of 4 sets */
     }
   `;
   if (![...styleSheet.cssRules].some(rule => rule.name === "scroll")) {
