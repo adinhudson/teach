@@ -20,7 +20,7 @@ const About = () => {
     { name: 'Sussex Innovation', img: 'brands/sussex.png' },
   ];
 
-  const sectionBg = '#fff4e6'; // Light orange for all sections
+  const sectionBg = 'linear-gradient(135deg, #ff8c42, #ff5e62)'; // Same gradient as CTA section
 
   const styles = {
     hero: {
@@ -46,9 +46,10 @@ const About = () => {
       borderRadius: '16px',
       boxShadow: '0 6px 16px rgba(0,0,0,0.15)',
       background: sectionBg,
+      color: '#fff',
     },
-    title: { fontSize: '26px', fontWeight: 'bold', marginBottom: '15px', color: '#eb7630', textAlign: 'center' },
-    text: { fontSize: '16px', lineHeight: '1.7', marginBottom: '12px', color: '#333' },
+    title: { fontSize: '26px', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center' },
+    text: { fontSize: '16px', lineHeight: '1.7', marginBottom: '12px', color: '#fff' },
 
     cardContainer: {
       display: 'flex',
@@ -57,8 +58,8 @@ const About = () => {
       justifyContent: 'center',
     },
     card: {
-      background: sectionBg,
-      color: '#eb7630',
+      background: 'rgba(255, 255, 255, 0.15)',
+      color: '#fff',
       padding: '20px',
       borderRadius: '12px',
       flex: '1 1 220px',
@@ -67,6 +68,7 @@ const About = () => {
       boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
       textAlign: 'center',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      backdropFilter: 'blur(4px)',
     },
     cardImg: {
       fontSize: '64px',
@@ -122,27 +124,27 @@ const About = () => {
           <h2 style={styles.title}>📘 Project Overview</h2>
           <p style={styles.text}>
             Our initiative helps students in Sri Lanka’s tea plantation communities improve exam success by providing
-            <strong style={{ color: '#eb7630' }}> live digital classes </strong> for
-            <strong style={{ color: '#eb7630' }}> Grades 9-11 </strong> in
-            <strong style={{ color: '#eb7630' }}> English, Maths, and Science </strong> 📚.
+            <strong> live digital classes </strong> for
+            <strong> Grades 9-11 </strong> in
+            <strong> English, Maths, and Science </strong> 📚.
           </p>
           <p style={styles.text}>
             Students gather in local hubs where lessons are streamed on large screens by
-            <strong style={{ color: '#eb7630' }}> qualified volunteer teachers </strong> 👩‍🏫.
+            <strong> qualified volunteer teachers </strong> 👩‍🏫.
           </p>
           <p style={styles.text}>
-            The program serves <strong style={{ color: '#eb7630' }}>10 communities</strong> in the Central Province over a minimum of 2 years.
-            <strong style={{ color: '#eb7630' }}> 30 volunteer teachers </strong> and
-            <strong style={{ color: '#eb7630' }}> 30 teaching assistants </strong> provide lesson notes, study guides, and support 📝.
+            The program serves <strong>10 communities</strong> in the Central Province over a minimum of 2 years.
+            <strong> 30 volunteer teachers </strong> and
+            <strong> 30 teaching assistants </strong> provide lesson notes, study guides, and support 📝.
           </p>
         </section>
 
         {/* Vision */}
         <section style={styles.section}>
           <h2 style={styles.title}>🌍 Our Vision</h2>
-          <p style={styles.text}>With <strong style={{ color: '#eb7630' }}>91% of estate families</strong> now having smartphone internet access, education is finally within reach.</p>
-          <p style={styles.text}>In partnership with <strong style={{ color: '#eb7630' }}>World Vision Lanka</strong>, our first phase brings <strong style={{ color: '#eb7630' }}>300+ students</strong> into live classes for Maths, English, and Science.</p>
-          <p style={styles.text}>These lessons help prepare students for their <strong style={{ color: '#eb7630' }}>GCE O-Level exams</strong>, streamed directly into schools.</p>
+          <p style={styles.text}>With <strong>91% of estate families</strong> now having smartphone internet access, education is finally within reach.</p>
+          <p style={styles.text}>In partnership with <strong>World Vision Lanka</strong>, our first phase brings <strong>300+ students</strong> into live classes for Maths, English, and Science.</p>
+          <p style={styles.text}>These lessons help prepare students for their <strong>GCE O-Level exams</strong>, streamed directly into schools.</p>
         </section>
 
         {/* Volunteers */}
