@@ -2,6 +2,10 @@ import React from "react";
 
 const VolunteerSignup = () => {
   const styles = {
+    page: {
+      overflowX: "hidden", // ✅ Prevents horizontal scrolling
+      boxSizing: "border-box",
+    },
     hero: {
       width: "100%",
       background: "linear-gradient(135deg, #eb7630, #eb7630)",
@@ -19,6 +23,7 @@ const VolunteerSignup = () => {
       maxWidth: "900px",
       margin: "0 auto",
       fontFamily: "Nunito, sans-serif",
+      boxSizing: "border-box",
     },
     section: {
       marginBottom: "40px",
@@ -27,6 +32,7 @@ const VolunteerSignup = () => {
       boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
       background: "linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)",
       color: "#fff",
+      boxSizing: "border-box",
     },
     title: {
       fontSize: "26px",
@@ -36,10 +42,12 @@ const VolunteerSignup = () => {
     },
     iframe: {
       width: "100%",
+      maxWidth: "100%", // ✅ Keeps iframe inside viewport
       minHeight: "1200px",
       border: "none",
       borderRadius: "12px",
       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+      display: "block",
     },
     ctaSection: {
       background: "linear-gradient(135deg, #ff8c42, #ff5e62)",
@@ -49,13 +57,14 @@ const VolunteerSignup = () => {
       borderRadius: "16px",
       marginTop: "50px",
       boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
+      boxSizing: "border-box",
     },
     ctaTitle: { fontSize: "2rem", fontWeight: "800", marginBottom: "15px" },
     ctaText: { fontSize: "1.1rem", marginBottom: "25px", lineHeight: "1.6" },
   };
 
   return (
-    <div>
+    <div style={styles.page}>
       {/* Hero */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>Become a Volunteer</h1>

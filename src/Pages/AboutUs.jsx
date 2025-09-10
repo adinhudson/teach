@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const About = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const volunteers = [
     { name: 'Ayesha Fernando', role: 'Volunteer Teacher', img: '👤' },
     { name: 'Ravi Perera', role: 'Volunteer Teacher', img: '👤' },
@@ -20,42 +28,51 @@ const About = () => {
     { name: 'Sussex Innovation', img: 'brands/sussex.png' },
   ];
 
-  const sectionBg = 'linear-gradient(135deg, #ff8c42, #ff5e62)'; // Same gradient as CTA section
+  const sectionBg = 'linear-gradient(135deg, #ff8c42, #ff5e62)';
 
   const styles = {
+    page: {
+      overflowX: 'hidden', // ✅ prevents horizontal scrolling
+      boxSizing: 'border-box',
+    },
     hero: {
       width: '100%',
       background: 'linear-gradient(135deg, #eb7630, #eb7630)',
-      padding: '60px 20px',
+      padding: isMobile ? '40px 15px' : '60px 20px',
       textAlign: 'center',
       color: '#fff',
       borderRadius: '12px',
       marginBottom: '40px',
       boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
     },
-    heroTitle: { fontSize: '2.5rem', fontWeight: '800', margin: 0 },
+    heroTitle: { fontSize: isMobile ? '2rem' : '2.5rem', fontWeight: '800', margin: 0 },
     container: {
       padding: '0 20px 60px 20px',
       maxWidth: '1000px',
       margin: '0 auto',
       fontFamily: 'Nunito, sans-serif',
+      textAlign: 'center',
+      boxSizing: 'border-box',
     },
     section: {
       marginBottom: '40px',
-      padding: '30px 20px',
+      padding: isMobile ? '20px 15px' : '30px 20px',
       borderRadius: '16px',
       boxShadow: '0 6px 16px rgba(0,0,0,0.15)',
       background: sectionBg,
       color: '#fff',
     },
-    title: { fontSize: '26px', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center' },
-    text: { fontSize: '16px', lineHeight: '1.7', marginBottom: '12px', color: '#fff' },
+    title: { fontSize: isMobile ? '1.6rem' : '2rem', fontWeight: 'bold', marginBottom: '15px' },
+    text: { fontSize: isMobile ? '0.95rem' : '1.1rem', lineHeight: isMobile ? '1.6' : '1.8', marginBottom: '12px' },
 
     cardContainer: {
       display: 'flex',
+      flexDirection: isMobile ? 'column' : 'row',
       gap: '20px',
       flexWrap: 'wrap',
       justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%', // ✅ prevents flex overflow
     },
     card: {
       background: 'rgba(255, 255, 255, 0.15)',
@@ -64,45 +81,48 @@ const About = () => {
       borderRadius: '12px',
       flex: '1 1 220px',
       maxWidth: '250px',
+      width: '100%', // ✅ ensures no overflow on small screens
       fontWeight: '600',
       boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
       textAlign: 'center',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       backdropFilter: 'blur(4px)',
+      marginBottom: isMobile ? '15px' : '0',
+      boxSizing: 'border-box',
     },
-    cardImg: {
-      fontSize: '64px',
-      marginBottom: '15px',
-    },
+    cardImg: { fontSize: '64px', marginBottom: '15px' },
     partnerImg: {
       maxWidth: '100%',
-      maxHeight: '100px',
+      height: 'auto',
       objectFit: 'contain',
       marginBottom: '15px',
+      display: 'block',
     },
     storyImg: {
-      width: '150px',
+      width: '100%',
+      maxWidth: '150px',
       height: '150px',
       objectFit: 'cover',
       borderRadius: '12px',
-      marginBottom: '15px',
+      margin: '0 auto 15px',
+      display: 'block',
     },
     ctaSection: {
       background: 'linear-gradient(135deg, #ff8c42, #ff5e62)',
       color: '#fff',
       textAlign: 'center',
-      padding: '50px 20px',
+      padding: isMobile ? '40px 15px' : '50px 20px',
       borderRadius: '16px',
       marginTop: '50px',
       boxShadow: '0 6px 16px rgba(0,0,0,0.2)',
     },
-    ctaTitle: { fontSize: '2rem', fontWeight: '800', marginBottom: '15px' },
-    ctaText: { fontSize: '1.1rem', marginBottom: '25px', lineHeight: '1.6' },
+    ctaTitle: { fontSize: isMobile ? '1.6rem' : '2rem', fontWeight: '800', marginBottom: '15px' },
+    ctaText: { fontSize: isMobile ? '1rem' : '1.1rem', marginBottom: '25px', lineHeight: '1.6' },
     button: {
       background: '#fff',
       color: '#ff5e42',
       border: 'none',
-      padding: '12px 28px',
+      padding: isMobile ? '10px 22px' : '12px 28px',
       fontSize: '16px',
       fontWeight: '700',
       borderRadius: '50px',
@@ -112,7 +132,7 @@ const About = () => {
   };
 
   return (
-    <div>
+    <div style={styles.page}>
       {/* Hero Section */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>About Us</h1>

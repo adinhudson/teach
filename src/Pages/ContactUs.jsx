@@ -27,7 +27,7 @@ const Contact = () => {
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
+        () => {
           alert('✅ Your message has been sent!');
           setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
         },
@@ -39,6 +39,10 @@ const Contact = () => {
   };
 
   const styles = {
+    page: {
+      overflowX: 'hidden', // ✅ prevents horizontal scroll
+      boxSizing: 'border-box',
+    },
     hero: {
       width: '100%',
       background: 'linear-gradient(135deg, #eb7630, #eb7630)',
@@ -51,23 +55,69 @@ const Contact = () => {
     },
     heroTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '10px' },
     heroSubtitle: { fontSize: '1.2rem', fontWeight: '500' },
-    container: { padding: '0 20px 60px 20px', maxWidth: '1000px', margin: '0 auto', fontFamily: 'Nunito, sans-serif' },
-    section: { marginBottom: '40px', padding: '30px 20px', borderRadius: '16px', boxShadow: '0 6px 16px rgba(0,0,0,0.15)' },
+    container: {
+      padding: '0 20px 60px 20px',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      fontFamily: 'Nunito, sans-serif',
+      boxSizing: 'border-box',
+    },
+    section: {
+      marginBottom: '40px',
+      padding: '30px 20px',
+      borderRadius: '16px',
+      boxShadow: '0 6px 16px rgba(0,0,0,0.15)',
+      background: '#fff',
+    },
     title: { fontSize: '26px', fontWeight: 'bold', marginBottom: '20px', color: '#ff6b42', textAlign: 'center' },
     text: { fontSize: '16px', lineHeight: '1.7', marginBottom: '12px', color: '#333', textAlign: 'center' },
-    cardContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '30px' },
-    card: { flex: '1 1 220px', maxWidth: '250px', padding: '20px', borderRadius: '12px', background: '#fff4ee', textAlign: 'center', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
+    cardContainer: {
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      marginBottom: '30px',
+      width: '100%', // ✅ keeps cards inside viewport
+    },
+    card: {
+      flex: '1 1 220px',
+      maxWidth: '250px',
+      width: '100%',
+      padding: '20px',
+      borderRadius: '12px',
+      background: '#fff4ee',
+      textAlign: 'center',
+      boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+      boxSizing: 'border-box',
+    },
     cardTitle: { fontWeight: '700', marginBottom: '5px', color: '#eb7630' },
     cardText: { fontSize: '14px', color: '#333' },
     form: { display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '20px' },
-    input: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px' },
-    textarea: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px', resize: 'vertical' },
-    button: { background: '#ff8c42', color: '#fff', border: 'none', padding: '12px', borderRadius: '50px', fontWeight: '700', cursor: 'pointer', transition: '0.3s' },
-    map: { width: '100%', height: '300px', borderRadius: '12px', border: 'none', marginTop: '20px' }
+    input: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px', width: '100%' },
+    textarea: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px', resize: 'vertical', width: '100%' },
+    button: {
+      background: '#ff8c42',
+      color: '#fff',
+      border: 'none',
+      padding: '12px',
+      borderRadius: '50px',
+      fontWeight: '700',
+      cursor: 'pointer',
+      transition: '0.3s',
+    },
+    map: {
+      width: '100%',
+      maxWidth: '100%', // ✅ keeps iframe within container
+      height: '300px',
+      borderRadius: '12px',
+      border: 'none',
+      marginTop: '20px',
+      display: 'block',
+    }
   };
 
   return (
-    <div>
+    <div style={styles.page}>
       {/* Hero Section */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>Contact Us</h1>
