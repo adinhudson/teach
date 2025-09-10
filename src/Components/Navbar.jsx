@@ -30,10 +30,7 @@ function Navbar() {
 
       {/* Hamburger button (mobile only) */}
       {isMobile && (
-        <button
-          style={styles.hamburger}
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button style={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
           ☰
         </button>
       )}
@@ -42,17 +39,29 @@ function Navbar() {
       <ul
         style={{
           ...styles.navLinks,
-          ...(isMobile
-            ? isOpen
-              ? styles.showMenu
-              : styles.hideMenu
-            : {}),
+          ...(isMobile ? (isOpen ? styles.showMenu : styles.hideMenu) : {}),
         }}
       >
-        <li><Link to="/" style={styles.link} onClick={handleLinkClick}>Home</Link></li>
-        <li><Link to="/about" style={styles.link} onClick={handleLinkClick}>About Us</Link></li>
-        <li><Link to="/contact" style={styles.link} onClick={handleLinkClick}>Contact Us</Link></li>
-        <li><Link to="/volunteer" style={styles.link} onClick={handleLinkClick}>Volunteer Sign-Up</Link></li>
+        <li>
+          <Link to="/" style={styles.link} onClick={handleLinkClick}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" style={styles.link} onClick={handleLinkClick}>
+            About Us
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" style={styles.link} onClick={handleLinkClick}>
+            Contact Us
+          </Link>
+        </li>
+        <li>
+          <Link to="/volunteer" style={styles.link} onClick={handleLinkClick}>
+            Volunteer Sign-Up
+          </Link>
+        </li>
       </ul>
     </nav>
   );
@@ -91,10 +100,11 @@ const styles = {
   link: {
     textDecoration: "none",
     color: "#fff",
-    fontWeight: 500,
+    fontWeight: 600,
+    fontSize: "16px",
   },
   hamburger: {
-    fontSize: "24px",
+    fontSize: "28px",
     background: "none",
     border: "none",
     color: "#fff",
@@ -109,10 +119,12 @@ const styles = {
     position: "absolute",
     top: "60px",
     right: "20px",
-    background: "#eb7630",
-    padding: "10px",
-    borderRadius: "8px",
-    gap: "10px",
+    background: "linear-gradient(135deg, #ff8c42, #ff5e62)", // ✅ gradient background
+    padding: "15px 20px",
+    borderRadius: "10px",
+    gap: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    zIndex: 2000,
   },
 };
 
