@@ -36,12 +36,13 @@ const About = () => {
       boxSizing: 'border-box',
     },
     hero: {
-      width: '100%',
+      width: '100vw',                          // ✅ full width
+      marginLeft: 'calc(-50vw + 50%)',         // ✅ centers hero correctly
       background: 'linear-gradient(135deg, #eb7630, #eb7630)',
       padding: isMobile ? '40px 15px' : '60px 20px',
       textAlign: 'center',
       color: '#fff',
-      borderRadius: '12px',
+      borderRadius: 0,                         // ✅ remove rounded corners
       marginBottom: '40px',
       boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
     },

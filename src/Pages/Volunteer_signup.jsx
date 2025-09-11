@@ -3,7 +3,7 @@ import React from "react";
 const VolunteerSignup = () => {
   const styles = {
     page: {
-      overflowX: "hidden", // ✅ Prevents horizontal scrolling
+      overflowX: "hidden",
       boxSizing: "border-box",
     },
     hero: {
@@ -12,12 +12,22 @@ const VolunteerSignup = () => {
       padding: "60px 20px",
       textAlign: "center",
       color: "#fff",
-      borderRadius: "12px",
+      borderRadius: "0px", // ✅ full width, no rounded corners
       marginBottom: "40px",
       boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
     },
-    heroTitle: { fontSize: "2.5rem", fontWeight: "800", margin: 0 },
-    heroText: { fontSize: "1.2rem", marginTop: "10px" },
+    heroTitle: {
+      fontSize: "clamp(1.8rem, 5vw, 2.5rem)", // ✅ responsive font
+      fontWeight: "800",
+      margin: 0,
+      lineHeight: "1.3",
+      wordWrap: "break-word", // ✅ prevents text cut-off
+    },
+    heroText: {
+      fontSize: "clamp(1rem, 3.5vw, 1.2rem)", // ✅ responsive text
+      marginTop: "10px",
+      lineHeight: "1.6",
+    },
     container: {
       padding: "0 20px 60px 20px",
       maxWidth: "900px",
@@ -42,7 +52,7 @@ const VolunteerSignup = () => {
     },
     iframe: {
       width: "100%",
-      maxWidth: "100%", // ✅ Keeps iframe inside viewport
+      maxWidth: "100%",
       minHeight: "1200px",
       border: "none",
       borderRadius: "12px",
@@ -59,8 +69,17 @@ const VolunteerSignup = () => {
       boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
       boxSizing: "border-box",
     },
-    ctaTitle: { fontSize: "2rem", fontWeight: "800", marginBottom: "15px" },
-    ctaText: { fontSize: "1.1rem", marginBottom: "25px", lineHeight: "1.6" },
+    ctaTitle: {
+      fontSize: "clamp(1.6rem, 4.5vw, 2rem)", // ✅ scales properly
+      fontWeight: "800",
+      marginBottom: "15px",
+      lineHeight: "1.4",
+    },
+    ctaText: {
+      fontSize: "clamp(1rem, 3vw, 1.1rem)",
+      marginBottom: "25px",
+      lineHeight: "1.6",
+    },
   };
 
   return (
@@ -68,7 +87,9 @@ const VolunteerSignup = () => {
       {/* Hero */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>Become a Volunteer</h1>
-        <p style={styles.heroText}>Give just 2 hours a week to change young lives 📚</p>
+        <p style={styles.heroText}>
+          Give just 2 hours a week to change young lives 📚
+        </p>
       </section>
 
       <div style={styles.container}>

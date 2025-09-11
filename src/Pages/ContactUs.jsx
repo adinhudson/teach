@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react';
-import emailjs from 'emailjs-com';
+import React, { useState, useRef } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    phone: "",
+    message: "",
   });
 
   const formRef = useRef();
@@ -28,11 +28,17 @@ const Contact = () => {
       )
       .then(
         () => {
-          alert('✅ Your message has been sent!');
-          setFormData({ name: '', email: '', subject: '', phone: '', message: '' });
+          alert("✅ Your message has been sent!");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            phone: "",
+            message: "",
+          });
         },
         (error) => {
-          alert('❌ Something went wrong. Please try again.');
+          alert("❌ Something went wrong. Please try again.");
           console.error(error.text);
         }
       );
@@ -40,80 +46,120 @@ const Contact = () => {
 
   const styles = {
     page: {
-      overflowX: 'hidden', // ✅ prevents horizontal scroll
-      boxSizing: 'border-box',
+      overflowX: "hidden", // ✅ prevents horizontal scroll
+      boxSizing: "border-box",
     },
     hero: {
-      width: '100%',
-      background: 'linear-gradient(135deg, #eb7630, #eb7630)',
-      padding: '60px 20px',
-      textAlign: 'center',
-      color: '#fff',
-      borderRadius: '12px',
-      marginBottom: '40px',
-      boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+      width: "100%",
+      background: "linear-gradient(135deg, #eb7630, #eb7630)",
+      padding: "60px 20px",
+      textAlign: "center",
+      color: "#fff",
+      borderRadius: 0, // ✅ full width (no rounded corners)
+      marginBottom: "40px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
     },
-    heroTitle: { fontSize: '2.5rem', fontWeight: '800', marginBottom: '10px' },
-    heroSubtitle: { fontSize: '1.2rem', fontWeight: '500' },
+    heroTitle: {
+      fontSize: "clamp(1.8rem, 5vw, 2.5rem)", // ✅ responsive font
+      fontWeight: "800",
+      marginBottom: "10px",
+      lineHeight: "1.3",
+      wordWrap: "break-word",
+    },
+    heroSubtitle: {
+      fontSize: "clamp(1rem, 3.5vw, 1.2rem)", // ✅ responsive font
+      fontWeight: "500",
+      lineHeight: "1.6",
+    },
     container: {
-      padding: '0 20px 60px 20px',
-      maxWidth: '1000px',
-      margin: '0 auto',
-      fontFamily: 'Nunito, sans-serif',
-      boxSizing: 'border-box',
+      padding: "0 20px 60px 20px",
+      maxWidth: "1000px",
+      margin: "0 auto",
+      fontFamily: "Nunito, sans-serif",
+      boxSizing: "border-box",
     },
     section: {
-      marginBottom: '40px',
-      padding: '30px 20px',
-      borderRadius: '16px',
-      boxShadow: '0 6px 16px rgba(0,0,0,0.15)',
-      background: '#fff',
+      marginBottom: "40px",
+      padding: "30px 20px",
+      borderRadius: "16px",
+      boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+      background: "#fff",
     },
-    title: { fontSize: '26px', fontWeight: 'bold', marginBottom: '20px', color: '#ff6b42', textAlign: 'center' },
-    text: { fontSize: '16px', lineHeight: '1.7', marginBottom: '12px', color: '#333', textAlign: 'center' },
+    title: {
+      fontSize: "26px",
+      fontWeight: "bold",
+      marginBottom: "20px",
+      color: "#ff6b42",
+      textAlign: "center",
+    },
+    text: {
+      fontSize: "16px",
+      lineHeight: "1.7",
+      marginBottom: "12px",
+      color: "#333",
+      textAlign: "center",
+    },
     cardContainer: {
-      display: 'flex',
-      gap: '20px',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      marginBottom: '30px',
-      width: '100%', // ✅ keeps cards inside viewport
+      display: "flex",
+      gap: "20px",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      marginBottom: "30px",
+      width: "100%",
     },
     card: {
-      flex: '1 1 220px',
-      maxWidth: '250px',
-      width: '100%',
-      padding: '20px',
-      borderRadius: '12px',
-      background: '#fff4ee',
-      textAlign: 'center',
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-      boxSizing: 'border-box',
+      flex: "1 1 220px",
+      maxWidth: "250px",
+      width: "100%",
+      padding: "20px",
+      borderRadius: "12px",
+      background: "#fff4ee",
+      textAlign: "center",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+      boxSizing: "border-box",
     },
-    cardTitle: { fontWeight: '700', marginBottom: '5px', color: '#eb7630' },
-    cardText: { fontSize: '14px', color: '#333' },
-    form: { display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '20px' },
-    input: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px', width: '100%' },
-    textarea: { padding: '12px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '16px', resize: 'vertical', width: '100%' },
+    cardTitle: { fontWeight: "700", marginBottom: "5px", color: "#eb7630" },
+    cardText: { fontSize: "14px", color: "#333" },
+    form: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "15px",
+      marginTop: "20px",
+    },
+    input: {
+      padding: "12px",
+      borderRadius: "8px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
+      width: "100%",
+    },
+    textarea: {
+      padding: "12px",
+      borderRadius: "8px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
+      resize: "vertical",
+      width: "100%",
+    },
     button: {
-      background: '#ff8c42',
-      color: '#fff',
-      border: 'none',
-      padding: '12px',
-      borderRadius: '50px',
-      fontWeight: '700',
-      cursor: 'pointer',
-      transition: '0.3s',
+      background: "#ff8c42",
+      color: "#fff",
+      border: "none",
+      padding: "12px",
+      borderRadius: "50px",
+      fontWeight: "700",
+      cursor: "pointer",
+      transition: "0.3s",
     },
     map: {
-      width: '100%',
-      maxWidth: '100%', // ✅ keeps iframe within container
-      height: '300px',
-      borderRadius: '12px',
-      border: 'none',
-      marginTop: '20px',
-      display: 'block',
-    }
+      width: "100%",
+      maxWidth: "100%",
+      height: "300px",
+      borderRadius: "12px",
+      border: "none",
+      marginTop: "20px",
+      display: "block",
+    },
   };
 
   return (
@@ -121,7 +167,9 @@ const Contact = () => {
       {/* Hero Section */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>Contact Us</h1>
-        <p style={styles.heroSubtitle}>We’d love to hear from you. Reach out with any questions or feedback!</p>
+        <p style={styles.heroSubtitle}>
+          We’d love to hear from you. Reach out with any questions or feedback!
+        </p>
       </section>
 
       <div style={styles.container}>
@@ -148,12 +196,53 @@ const Contact = () => {
         <section style={styles.section}>
           <h2 style={styles.title}>✉ Send a Message</h2>
           <form ref={formRef} style={styles.form} onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Name (Required)" required style={styles.input} value={formData.name} onChange={handleChange} />
-            <input type="email" name="email" placeholder="Email Address (Required)" required style={styles.input} value={formData.email} onChange={handleChange} />
-            <input type="text" name="subject" placeholder="Subject (Required)" required style={styles.input} value={formData.subject} onChange={handleChange} />
-            <input type="text" name="phone" placeholder="Phone" style={styles.input} value={formData.phone} onChange={handleChange} />
-            <textarea name="message" placeholder="Message" required rows="5" style={styles.textarea} value={formData.message} onChange={handleChange} />
-            <button type="submit" style={styles.button}>Send Message</button>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name (Required)"
+              required
+              style={styles.input}
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address (Required)"
+              required
+              style={styles.input}
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject (Required)"
+              required
+              style={styles.input}
+              value={formData.subject}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone"
+              style={styles.input}
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              required
+              rows="5"
+              style={styles.textarea}
+              value={formData.message}
+              onChange={handleChange}
+            />
+            <button type="submit" style={styles.button}>
+              Send Message
+            </button>
           </form>
         </section>
 
