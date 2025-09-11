@@ -50,21 +50,27 @@ const Contact = () => {
       boxSizing: "border-box",
     },
     hero: {
-      width: "100%",
+      width: "100vw",
+      marginLeft: "calc(-50vw + 50%)",
+      marginRight: "calc(-50vw + 50%)",
       background: "linear-gradient(135deg, #eb7630, #eb7630)",
-      padding: "60px 20px",
+      padding: window.innerWidth <= 768 ? "40px 15px" : "60px 20px",
       textAlign: "center",
       color: "#fff",
-      borderRadius: 0, // ✅ full width (no rounded corners)
+      borderRadius: 0,
       marginBottom: "40px",
       boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+      boxSizing: "border-box",
+      overflow: "hidden",
     },
     heroTitle: {
-      fontSize: "clamp(1.8rem, 5vw, 2.5rem)", // ✅ responsive font
+      fontSize: window.innerWidth <= 768 ? "2rem" : "2.5rem",
       fontWeight: "800",
-      marginBottom: "10px",
+      margin: "0 auto 10px",
       lineHeight: "1.3",
       wordWrap: "break-word",
+      maxWidth: "90%",
+      padding: "0 10px",
     },
     heroSubtitle: {
       fontSize: "clamp(1rem, 3.5vw, 1.2rem)", // ✅ responsive font
@@ -125,6 +131,9 @@ const Contact = () => {
       flexDirection: "column",
       gap: "15px",
       marginTop: "20px",
+      maxWidth: "600px",
+      margin: "20px auto",
+      width: "100%",
     },
     input: {
       padding: "12px",
@@ -132,6 +141,11 @@ const Contact = () => {
       border: "1px solid #ccc",
       fontSize: "16px",
       width: "100%",
+      boxSizing: "border-box",
+      outline: "none",
+      "&:focus": {
+        borderColor: "#eb7630",
+      },
     },
     textarea: {
       padding: "12px",
@@ -140,16 +154,30 @@ const Contact = () => {
       fontSize: "16px",
       resize: "vertical",
       width: "100%",
+      boxSizing: "border-box",
+      outline: "none",
+      minHeight: "120px",
+      "&:focus": {
+        borderColor: "#eb7630",
+      },
     },
     button: {
       background: "#ff8c42",
       color: "#fff",
       border: "none",
-      padding: "12px",
+      padding: "14px 28px",
       borderRadius: "50px",
       fontWeight: "700",
       cursor: "pointer",
-      transition: "0.3s",
+      transition: "all 0.3s ease",
+      fontSize: "16px",
+      width: "200px",
+      alignSelf: "center",
+      "&:hover": {
+        background: "#eb7630",
+        transform: "translateY(-2px)",
+        boxShadow: "0 4px 12px rgba(235, 118, 48, 0.3)",
+      },
     },
     map: {
       width: "100%",

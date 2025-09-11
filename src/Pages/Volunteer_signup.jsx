@@ -7,21 +7,27 @@ const VolunteerSignup = () => {
       boxSizing: "border-box",
     },
     hero: {
-      width: "100%",
+      width: "100vw",
+      marginLeft: "calc(-50vw + 50%)",
+      marginRight: "calc(-50vw + 50%)",
       background: "linear-gradient(135deg, #eb7630, #eb7630)",
-      padding: "60px 20px",
+      padding: window.innerWidth <= 768 ? "40px 15px" : "60px 20px",
       textAlign: "center",
       color: "#fff",
-      borderRadius: "0px", // ✅ full width, no rounded corners
+      borderRadius: 0,
       marginBottom: "40px",
       boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+      boxSizing: "border-box",
+      overflow: "hidden",
     },
     heroTitle: {
-      fontSize: "clamp(1.8rem, 5vw, 2.5rem)", // ✅ responsive font
+      fontSize: window.innerWidth <= 768 ? "2rem" : "2.5rem",
       fontWeight: "800",
-      margin: 0,
+      margin: "0 auto",
+      maxWidth: "90%",
+      padding: "0 10px",
       lineHeight: "1.3",
-      wordWrap: "break-word", // ✅ prevents text cut-off
+      wordWrap: "break-word",
     },
     heroText: {
       fontSize: "clamp(1rem, 3.5vw, 1.2rem)", // ✅ responsive text

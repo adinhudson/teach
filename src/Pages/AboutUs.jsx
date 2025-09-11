@@ -36,24 +36,36 @@ const About = () => {
       boxSizing: 'border-box',
     },
     hero: {
-      width: '100vw',                          // ✅ full width
-      marginLeft: 'calc(-50vw + 50%)',         // ✅ centers hero correctly
+      width: '100vw',
+      marginLeft: 'calc(-50vw + 50%)',
+      marginRight: 'calc(-50vw + 50%)',
       background: 'linear-gradient(135deg, #eb7630, #eb7630)',
       padding: isMobile ? '40px 15px' : '60px 20px',
       textAlign: 'center',
       color: '#fff',
-      borderRadius: 0,                         // ✅ remove rounded corners
+      borderRadius: 0,
       marginBottom: '40px',
       boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+      boxSizing: 'border-box',
+      overflow: 'hidden',
     },
-    heroTitle: { fontSize: isMobile ? '2rem' : '2.5rem', fontWeight: '800', margin: 0 },
+    heroTitle: { 
+      fontSize: isMobile ? '2rem' : '2.5rem', 
+      fontWeight: '800', 
+      margin: '0 auto',
+      maxWidth: '90%',
+      padding: '0 10px',
+      lineHeight: '1.3',
+      wordWrap: 'break-word',
+    },
     container: {
-      padding: '0 20px 60px 20px',
-      maxWidth: '1000px',
+      padding: isMobile ? '0 15px 40px' : '0 20px 60px',
+      maxWidth: isMobile ? '100%' : '1000px',
       margin: '0 auto',
       fontFamily: 'Nunito, sans-serif',
       textAlign: 'center',
       boxSizing: 'border-box',
+      width: '100%',
     },
     section: {
       marginBottom: '40px',
