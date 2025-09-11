@@ -195,7 +195,11 @@ function Home() {
 }
 
 const styles = {
-  container: { fontFamily: 'Nunito, sans-serif', textAlign: 'center' },
+  container: { 
+    fontFamily: 'Nunito, sans-serif', 
+    textAlign: 'center',
+    paddingTop: '69px', // Height of navbar
+  },
 
   hero: {
     display: 'flex',
@@ -204,6 +208,7 @@ const styles = {
     alignItems: 'center',
     background: 'linear-gradient(135deg, #eb7630, #eb7630)',
     position: 'relative',
+    width: '100%',
     zIndex: 1,
   },
   heroContent: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' },

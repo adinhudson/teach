@@ -48,6 +48,7 @@ const Contact = () => {
     page: {
       overflowX: "hidden", // ✅ prevents horizontal scroll
       boxSizing: "border-box",
+      paddingTop: "69px", // Height of navbar
     },
     hero: {
       width: "100vw",

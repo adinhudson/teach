@@ -5,6 +5,7 @@ const VolunteerSignup = () => {
     page: {
       overflowX: "hidden",
       boxSizing: "border-box",
+      paddingTop: "69px", // Height of navbar
     },
     hero: {
       width: "100vw",
