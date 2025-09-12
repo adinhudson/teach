@@ -199,6 +199,10 @@ const styles = {
     fontFamily: 'Nunito, sans-serif', 
     textAlign: 'center',
     paddingTop: '69px', // Height of navbar
+    width: '100%',
+    maxWidth: '100vw',
+    overflowX: 'hidden',
+    position: 'relative',
   },
 
   hero: {
@@ -215,16 +219,58 @@ const styles = {
   mainLogo: { objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff' },
   fancyText: { fontWeight: '800', lineHeight: '1.2', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
 
-  aboutSection: { padding: '50px 20px', maxWidth: '1000px', margin: '30px auto', position: 'relative', zIndex: 1 },
-  aboutTitle: { fontSize: '2.3rem', fontWeight: '800', color: '#eb7630', marginBottom: '20px' },
-  aboutBox: { backgroundColor: '#ffe6d1', borderRadius: '12px', padding: '25px 20px' },
+  aboutSection: { 
+    padding: '50px 20px', 
+    maxWidth: '1000px', 
+    margin: '30px auto', 
+    position: 'relative', 
+    zIndex: 1,
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  aboutTitle: { 
+    fontSize: '2.3rem', 
+    fontWeight: '800', 
+    color: '#eb7630', 
+    marginBottom: '20px',
+    padding: '0 10px',
+  },
+  aboutBox: { 
+    backgroundColor: '#ffe6d1', 
+    borderRadius: '12px', 
+    padding: '25px 20px',
+    margin: '0 10px',
+    boxSizing: 'border-box',
+  },
   aboutText: { fontWeight: '600', color: '#222' },
   highlight: { color: '#eb7630', fontWeight: '800' },
 
-  videoSection: { padding: '30px 10px', position: 'relative', zIndex: 1 },
-  sectionTitle: { marginBottom: '20px', color: '#eb7630' },
-  videoWrapper: { position: 'relative', display: 'inline-block', width: '90%', maxWidth: '700px', zIndex: 1 },
-  video: { width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' },
+  videoSection: { 
+    padding: '30px 10px', 
+    position: 'relative', 
+    zIndex: 1,
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  sectionTitle: { 
+    marginBottom: '20px', 
+    color: '#eb7630',
+    padding: '0 15px',
+  },
+  videoWrapper: { 
+    position: 'relative', 
+    display: 'inline-block', 
+    width: '90%', 
+    maxWidth: '700px', 
+    zIndex: 1,
+    boxSizing: 'border-box',
+  },
+  video: { 
+    width: '100%', 
+    borderRadius: '12px', 
+    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+    maxWidth: '100%',
+  },
   muteButton: { position: 'absolute', bottom: '10px', right: '10px', background: '#eb7630', border: 'none', padding: '8px 15px', color: '#fff', fontWeight: 'bold', borderRadius: '8px', cursor: 'pointer' },
 
   howItWorksSection: { padding: '50px 20px', position: 'relative', zIndex: 1 },
@@ -235,16 +281,48 @@ const styles = {
   stepTitle: { fontWeight: '700', margin: '5px 0' },
   stepDescription: { color: '#fff' },
 
-  recognitionSection: { padding: '50px 20px', background: '#fff7f2', position: 'relative', zIndex: 1 },
-  logoScroller: { overflow: 'hidden', width: '100%' },
-  logoTrack: { display: 'flex', flexWrap: 'nowrap', animation: 'scroll 40s linear infinite' },
+  recognitionSection: { 
+    padding: '50px 20px', 
+    background: '#fff7f2', 
+    position: 'relative', 
+    zIndex: 1,
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  logoScroller: { 
+    overflow: 'hidden', 
+    width: '100%',
+    maxWidth: '100vw',
+  },
+  logoTrack: { 
+    display: 'flex', 
+    flexWrap: 'nowrap', 
+    animation: 'scroll 40s linear infinite',
+    boxSizing: 'border-box',
+  },
   logoCard: { flex: '0 0 auto', margin: '0 25px', textAlign: 'center' },
   logoImage: { objectFit: 'contain' },
   logoName: { marginTop: '6px', fontSize: '0.85rem', color: '#333' },
 
-  volunteerSection: { padding: '60px 20px', background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', color: '#fff', position: 'relative', zIndex: 1 },
-  volunteerTitle: { fontWeight: '800', marginBottom: '20px' },
-  volunteerText: { marginBottom: '25px', fontWeight: '600' },
+  volunteerSection: { 
+    padding: '60px 20px', 
+    background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', 
+    color: '#fff', 
+    position: 'relative', 
+    zIndex: 1,
+    width: '100%',
+    boxSizing: 'border-box',
+  },
+  volunteerTitle: { 
+    fontWeight: '800', 
+    marginBottom: '20px',
+    padding: '0 10px',
+  },
+  volunteerText: { 
+    marginBottom: '25px', 
+    fontWeight: '600',
+    padding: '0 10px',
+  },
   volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', borderRadius: '8px', textDecoration: 'none', transition: '0.3s' },
 };
 
