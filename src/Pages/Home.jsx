@@ -42,12 +42,19 @@ function Home() {
         <div style={{
           ...styles.heroContent,
           flexDirection: isMobile ? "column" : "row",
-          gap: isMobile ? "20px" : "40px"
+          gap: isMobile ? "20px" : "40px",
+          padding: isMobile ? "0 10px" : "0",
+          boxSizing: "border-box",
+          width: "100%"
         }}>
           <h1 style={{
             ...styles.fancyText,
             fontSize: isMobile ? "2rem" : "3rem",
-            maxWidth: isMobile ? "100%" : "480px"
+            maxWidth: isMobile ? "100%" : "480px",
+            padding: isMobile ? "0 15px" : "0",
+            margin: isMobile ? "0 auto" : "0",
+            width: isMobile ? "calc(100% - 30px)" : "auto",
+            boxSizing: "border-box"
           }}>
             Empowering Communities<br />Through Education
           </h1>
