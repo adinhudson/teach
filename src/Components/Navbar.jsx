@@ -41,15 +41,8 @@ function Navbar() {
     if (isMobile) setIsOpen(false);
   };
 
-  // Dynamic style for scrolled state
-  const navStyle = {
-    background: scrolled ? "rgba(235, 118, 48, 0.98)" : "rgba(235, 118, 48, 0.95)",
-    padding: scrolled ? "8px 5%" : "12px 5%",
-    boxShadow: scrolled ? "0 2px 20px rgba(0, 0, 0, 0.15)" : "0 2px 20px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
-    <nav className="navbar" style={navStyle}>
+    <nav className="navbar" >
       {/* Logo */}
       <Link to="/" className="logo-container">
         <img
