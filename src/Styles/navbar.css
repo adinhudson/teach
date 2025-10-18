@@ -82,7 +82,7 @@
 }
 .hamburger {
   font-size: 24px;
-  background: rgba(0, 0, 0, 0.07);
+  background: #f5f3f3;
   border: none;
   color: #222;
   cursor: pointer;
@@ -96,7 +96,7 @@
   font-family: 'Poiret One', Arial, Helvetica, sans-serif;
 }
 .hamburger:hover {
-  background: rgba(0, 0, 0, 0.15);
+  background: #f7b88f;
   transform: scale(1.1);
 }
 .hide-menu {
