@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import '../Styles/home.css';
 
 function Home() {
   const [muted, setMuted] = useState(true);
@@ -31,52 +32,24 @@ function Home() {
   const repeatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
-    <div style={styles.container}>
-
+    <div className="container">
       {/* Hero Section */}
-      <section style={{
-        ...styles.hero,
-        padding: isMobile ? "30px 15px" : "60px 20px",
-        textAlign: "center"
-      }}>
-        <div style={{
-          ...styles.heroContent,
-          flexDirection: isMobile ? "column" : "row",
-          gap: isMobile ? "20px" : "40px",
-          padding: isMobile ? "0 10px" : "0",
-          boxSizing: "border-box",
-          width: "100%"
-        }}>
-          <h1 style={{
-            ...styles.fancyText,
-            fontSize: isMobile ? "2rem" : "3rem",
-            maxWidth: isMobile ? "100%" : "480px",
-            padding: isMobile ? "0 15px" : "0",
-            margin: isMobile ? "0 auto" : "0",
-            width: isMobile ? "calc(100% - 30px)" : "auto",
-            boxSizing: "border-box"
-          }}>
+      <section className="hero" style={{padding: isMobile ? "30px 15px" : "60px 20px", textAlign: "center"}}>
+        <div className="heroContent" style={{flexDirection: isMobile ? "column" : "row", gap: isMobile ? "20px" : "40px", padding: isMobile ? "0 10px" : "0", boxSizing: "border-box", width: "100%"}}>
+          <h1 className="fancyText" style={{fontSize: isMobile ? "2rem" : "3rem", maxWidth: isMobile ? "100%" : "480px", padding: isMobile ? "0 15px" : "0", margin: isMobile ? "0 auto" : "0", width: isMobile ? "calc(100% - 30px)" : "auto", boxSizing: "border-box"}}>
             Empowering Communities<br />Through Education
           </h1>
           <img
-            src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"}
-            style={{
-              ...styles.mainLogo,
-              width: isMobile ? "140px" : "220px",
-              marginTop: isMobile ? "15px" : "0"
-            }}
+            src={"/hero_image.png"}
+            className="mainLogo"
             alt="TEAch Volunteers"
           />
         </div>
-
         <div style={{ marginTop: "30px" }}>
           <Link 
             to="/volunteer" 
-            style={{
-              ...styles.volunteerButton,
-              fontSize: isMobile ? "1rem" : "1.2rem",
-              padding: isMobile ? "10px 20px" : "12px 30px"
-            }}
+            className="volunteerButton"
+            style={{fontSize: isMobile ? "1rem" : "1.2rem", padding: isMobile ? "10px 20px" : "12px 30px"}}
           >
             Become a Volunteer
           </Link>
@@ -84,75 +57,53 @@ function Home() {
       </section>
 
       {/* Who We Are Section */}
-      <section style={styles.aboutSection}>
-        <h2 style={styles.aboutTitle}>✨ Who We Are</h2>
-        <div style={styles.aboutBox}>
-          <p style={{
-            ...styles.aboutText,
-            fontSize: isMobile ? "1rem" : "1.3rem",
-            lineHeight: isMobile ? "1.6" : "1.9"
-          }}>
+      <section className="aboutSection">
+        <h2 className="aboutTitle">✨ Who We Are</h2>
+        <div className="aboutBox">
+          <p className="aboutText" style={{fontSize: isMobile ? "1rem" : "1.3rem", lineHeight: isMobile ? "1.6" : "1.9"}}>
             Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
-            <span style={styles.highlight}>TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
-            <span style={styles.highlight}> support</span>,
-            <span style={styles.highlight}> confidence</span>, and
-            <span style={styles.highlight}> hope</span> to succeed. <br />
+            <span className="highlight">TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
+            <span className="highlight"> support</span>,
+            <span className="highlight"> confidence</span>, and
+            <span className="highlight"> hope</span> to succeed. <br />
             Our mission: every child deserves the chance to
-            <span style={styles.highlight}> learn</span>,
-            <span style={styles.highlight}> grow</span>, and
-            <span style={styles.highlight}> dream of a brighter future</span>.
+            <span className="highlight"> learn</span>,
+            <span className="highlight"> grow</span>, and
+            <span className="highlight"> dream of a brighter future</span>.
           </p>
         </div>
       </section>
 
       {/* Video Section */}
-      <section style={styles.videoSection}>
-        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>
+      <section className="videoSection">
+        <h2 className="sectionTitle" style={{fontSize: isMobile ? "1.5rem" : "2rem"}}>
           See Us In Action 🎥
         </h2>
-        <div style={styles.videoWrapper}>
+        <div className="videoWrapper">
           <video
-            style={styles.video}
+            className="video"
             autoPlay
             loop
             muted={muted}
-            src={process.env.PUBLIC_URL + "/videos/new_teach.mp4"}
+            src={"/videos/new_teach.mp4"}
           />
-          <button style={styles.muteButton} onClick={toggleMute}>
+          <button className="muteButton" onClick={toggleMute}>
             {muted ? 'Unmute 🔊' : 'Mute 🔇'}
           </button>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section style={styles.howItWorksSection}>
-        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>How It Works</h2>
-        <div style={{
-          ...styles.stepContainer,
-          flexDirection: isMobile ? "column" : "row",
-          alignItems: 'stretch',
-        }}>
+      <section className="howItWorksSection">
+        <h2 className="sectionTitle" style={{fontSize: isMobile ? "1.5rem" : "2rem"}}>How It Works</h2>
+        <div className="stepContainer" style={{flexDirection: isMobile ? "column" : "row", alignItems: 'stretch'}}>
           {steps.map((step) => (
-            <div key={step.number} style={{
-              ...styles.stepCard,
-              flex: 1,
-              padding: isMobile ? "15px" : "20px",
-              marginBottom: isMobile ? "15px" : "0",
-              display: 'flex',
-              flexDirection: 'column',
-            }}>
-              <div style={styles.stepIcon}>{step.icon}</div>
+            <div key={step.number} className="stepCard" style={{flex: 1, padding: isMobile ? "15px" : "20px", marginBottom: isMobile ? "15px" : "0", display: 'flex', flexDirection: 'column'}}>
+              <div className="stepIcon">{step.icon}</div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <div style={styles.stepNumber}>Step {step.number}</div>
-                <h3 style={{
-                  ...styles.stepTitle,
-                  fontSize: isMobile ? "1.1rem" : "1.3rem"
-                }}>{step.title}</h3>
-                <p style={{
-                  ...styles.stepDescription,
-                  fontSize: isMobile ? "0.95rem" : "1rem",
-                  marginTop: 'auto'
-                }}>{step.description}</p>
+                <div className="stepNumber">Step {step.number}</div>
+                <h3 className="stepTitle" style={{fontSize: isMobile ? "1.1rem" : "1.3rem"}}>{step.title}</h3>
+                <p className="stepDescription" style={{fontSize: isMobile ? "0.95rem" : "1rem", marginTop: 'auto'}}>{step.description}</p>
               </div>
             </div>
           ))}
@@ -160,17 +111,14 @@ function Home() {
       </section>
 
       {/* Recognition Section */}
-      <section style={styles.recognitionSection}>
-        <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? "1.5rem" : "2rem" }}>🌟 TEAch Has Been Recognized By</h2>
-        <div style={styles.logoScroller}>
-          <div style={styles.logoTrack}>
+      <section className="recognitionSection">
+        <h2 className="sectionTitle" style={{fontSize: isMobile ? "1.5rem" : "2rem"}}>🌟 TEAch Has Been Recognized By</h2>
+        <div className="logoScroller">
+          <div className="logoTrack">
             {repeatedLogos.map((logo, i) => (
-              <div key={i} style={styles.logoCard}>
-                <img src={process.env.PUBLIC_URL + logo.src} alt={logo.name} style={{
-                  ...styles.logoImage,
-                  height: isMobile ? "50px" : "80px"
-                }} />
-                <p style={styles.logoName}>{logo.name}</p>
+              <div key={i} className="logoCard">
+                <img src={logo.src} alt={logo.name} className="logoImage" style={{height: isMobile ? "50px" : "80px"}} />
+                <p className="logoName">{logo.name}</p>
               </div>
             ))}
           </div>
@@ -178,173 +126,23 @@ function Home() {
       </section>
 
       {/* Become a Volunteer Section */}
-      <section style={styles.volunteerSection}>
-        <h2 style={{ ...styles.volunteerTitle, fontSize: isMobile ? "1.8rem" : "2.4rem" }}>
+      <section className="volunteerSection">
+        <h2 className="volunteerTitle" style={{fontSize: isMobile ? "1.8rem" : "2.4rem"}}>
           ✨ Join Us Now – Change Young Lives Forever ✨
         </h2>
-        <p style={{ ...styles.volunteerText, fontSize: isMobile ? "1rem" : "1.2rem" }}>
-          Give just <span style={styles.highlight}>2 hours a week</span> and help empower the next generation to dream, learn, and achieve.
+        <p className="volunteerText" style={{fontSize: isMobile ? "1rem" : "1.2rem"}}>
+          Give just <span className="highlight">2 hours a week</span> and help empower the next generation to dream, learn, and achieve.
         </p>
         <Link 
           to="/volunteer" 
-          style={{
-            ...styles.volunteerButton,
-            fontSize: isMobile ? "1rem" : "1.2rem",
-            padding: isMobile ? "10px 20px" : "12px 30px"
-          }}
+          className="volunteerButton"
+          style={{fontSize: isMobile ? "1rem" : "1.2rem", padding: isMobile ? "10px 20px" : "12px 30px"}}
         >
           Become a Volunteer
         </Link>
       </section>
-
     </div>
   );
-}
-
-const styles = {
-  container: { 
-    fontFamily: 'Nunito, sans-serif', 
-    textAlign: 'center',
-    paddingTop: '69px', // Height of navbar
-    width: '100%',
-    maxWidth: '100vw',
-    overflowX: 'hidden',
-    position: 'relative',
-  },
-
-  hero: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'linear-gradient(135deg, #eb7630, #eb7630)',
-    position: 'relative',
-    width: '100%',
-    zIndex: 1,
-  },
-  heroContent: { display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' },
-  mainLogo: { objectFit: 'contain', borderRadius: '12px', backgroundColor: '#fff' },
-  fancyText: { fontWeight: '800', lineHeight: '1.2', background: 'linear-gradient(90deg, #ffffff, #ffdab3, #eb7630)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
-
-  aboutSection: { 
-    padding: '50px 20px', 
-    maxWidth: '1000px', 
-    margin: '30px auto', 
-    position: 'relative', 
-    zIndex: 1,
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  aboutTitle: { 
-    fontSize: '2.3rem', 
-    fontWeight: '800', 
-    color: '#eb7630', 
-    marginBottom: '20px',
-    padding: '0 10px',
-  },
-  aboutBox: { 
-    backgroundColor: '#ffe6d1', 
-    borderRadius: '12px', 
-    padding: '25px 20px',
-    margin: '0 10px',
-    boxSizing: 'border-box',
-  },
-  aboutText: { fontWeight: '600', color: '#222' },
-  highlight: { color: '#eb7630', fontWeight: '800' },
-
-  videoSection: { 
-    padding: '30px 10px', 
-    position: 'relative', 
-    zIndex: 1,
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  sectionTitle: { 
-    marginBottom: '20px', 
-    color: '#eb7630',
-    padding: '0 15px',
-  },
-  videoWrapper: { 
-    position: 'relative', 
-    display: 'inline-block', 
-    width: '90%', 
-    maxWidth: '700px', 
-    zIndex: 1,
-    boxSizing: 'border-box',
-  },
-  video: { 
-    width: '100%', 
-    borderRadius: '12px', 
-    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-    maxWidth: '100%',
-  },
-  muteButton: { position: 'absolute', bottom: '10px', right: '10px', background: '#eb7630', border: 'none', padding: '8px 15px', color: '#fff', fontWeight: 'bold', borderRadius: '8px', cursor: 'pointer' },
-
-  howItWorksSection: { padding: '50px 20px', position: 'relative', zIndex: 1 },
-  stepContainer: { display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' },
-  stepCard: { display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '12px', background: 'linear-gradient(135deg, #ffa366, #eb7630)', color: '#fff', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' },
-  stepIcon: { fontSize: '2.5rem', marginBottom: '10px' },
-  stepNumber: { fontWeight: '800', fontSize: '1.1rem' },
-  stepTitle: { fontWeight: '700', margin: '5px 0' },
-  stepDescription: { color: '#fff' },
-
-  recognitionSection: { 
-    padding: '50px 20px', 
-    background: '#fff7f2', 
-    position: 'relative', 
-    zIndex: 1,
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  logoScroller: { 
-    overflow: 'hidden', 
-    width: '100%',
-    maxWidth: '100vw',
-  },
-  logoTrack: { 
-    display: 'flex', 
-    flexWrap: 'nowrap', 
-    animation: 'scroll 40s linear infinite',
-    boxSizing: 'border-box',
-  },
-  logoCard: { flex: '0 0 auto', margin: '0 25px', textAlign: 'center' },
-  logoImage: { objectFit: 'contain' },
-  logoName: { marginTop: '6px', fontSize: '0.85rem', color: '#333' },
-
-  volunteerSection: { 
-    padding: '60px 20px', 
-    background: 'linear-gradient(135deg, #ffdab3, #ffa366, #eb7630)', 
-    color: '#fff', 
-    position: 'relative', 
-    zIndex: 1,
-    width: '100%',
-    boxSizing: 'border-box',
-  },
-  volunteerTitle: { 
-    fontWeight: '800', 
-    marginBottom: '20px',
-    padding: '0 10px',
-  },
-  volunteerText: { 
-    marginBottom: '25px', 
-    fontWeight: '600',
-    padding: '0 10px',
-  },
-  volunteerButton: { background: '#fff', color: '#eb7630', fontWeight: '800', borderRadius: '8px', textDecoration: 'none', transition: '0.3s' },
-};
-
-// Inject keyframes globally
-const styleSheet = document.styleSheets[0];
-if (styleSheet) {
-  const keyframes = `
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-25%); } /* scrolls through 1 of 4 sets */
-    }
-  `;
-  if (![...styleSheet.cssRules].some(rule => rule.name === "scroll")) {
-    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-  }
 }
 
 export default Home;
