@@ -1,213 +1,314 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Home Page Styles moved from Home.jsx */
 .container {
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-  padding-top: 69px;
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  position: relative;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    padding-top: 69px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
 }
+
 .hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #f5f3f3;
-  position: relative;
-  width: 100%;
-  z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f5f3f3;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    padding: 60px 20px;
+    text-align: center;
 }
+
+.hero>div:last-child {
+    margin-top: 30px;
+}
+
 .heroContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: row;
+    /* side-by-side layout on desktop */
+    gap: 40px;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 .mainLogo {
-  object-fit: contain;
-  border-radius: 12px;
-  width: 500px;
-  height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    width: 500px;
+    height: auto;
+    max-width: 100%;
 }
+
 @media (max-width: 768px) {
-  .mainLogo {
-    width: 360px;
-    max-width: 70vw;
-  }
+    .mainLogo {
+        width: 360px;
+        max-width: 70vw;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+
+    .heroContent {
+        flex-direction: column;
+        /* stack vertically */
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .fancyText {
+        font-size: 2rem;
+        max-width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        width: calc(100% - 30px);
+    }
+
+    .volunteerButton {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
 }
+
 .fancyText {
-  font-family: 'Saira Extra Condensed', Arial, Helvetica, sans-serif;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #111;
-  background: none;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+    background: none;
+    font-size: 3rem;
+    max-width: 480px;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    box-sizing: border-box;
+    text-align: left;
 }
+
+.subText {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-weight: regular;
+}
+
 .aboutSection {
-  padding: 50px 20px;
-  max-width: 1000px;
-  margin: 30px auto;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  box-sizing: border-box;
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .aboutTitle {
-  font-size: 2.3rem;
-  font-weight: 800;
-  color: #eb7630;
-  margin-bottom: 20px;
-  padding: 0 10px;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #eb7630;
+    margin-bottom: 20px;
+    padding: 0 10px;
 }
+
 .aboutBox {
-  background-color: #ffe6d1;
-  border-radius: 12px;
-  padding: 25px 20px;
-  margin: 0 10px;
-  box-sizing: border-box;
+    background-color: #ffe6d1;
+    border-radius: 12px;
+    padding: 25px 20px;
+    margin: 0 10px;
+    box-sizing: border-box;
 }
+
 .aboutText {
-  font-weight: 600;
-  color: #222;
+    font-weight: 600;
+    color: #222;
 }
+
 .highlight {
-  color: #eb7630;
-  font-weight: 800;
+    color: #eb7630;
+    font-weight: 800;
 }
+
 .videoSection {
-  padding: 30px 10px;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  box-sizing: border-box;
+    padding: 30px 10px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .sectionTitle {
-  margin-bottom: 20px;
-  color: #eb7630;
-  padding: 0 15px;
+    margin-bottom: 20px;
+    color: #eb7630;
+    padding: 0 15px;
 }
+
 .videoWrapper {
-  position: relative;
-  display: inline-block;
-  width: 90%;
-  max-width: 700px;
-  z-index: 1;
-  box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    width: 90%;
+    max-width: 700px;
+    z-index: 1;
+    box-sizing: border-box;
 }
+
 .video {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  max-width: 100%;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
 }
+
 .muteButton {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: #eb7630;
-  border: none;
-  padding: 8px 15px;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #eb7630;
+    border: none;
+    padding: 8px 15px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
 }
+
 .howItWorksSection {
-  padding: 50px 20px;
-  position: relative;
-  z-index: 1;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
 }
+
 .stepContainer {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .stepCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ffa366, #eb7630);
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffa366, #eb7630);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .stepIcon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
+
 .stepNumber {
-  font-weight: 800;
-  font-size: 1.1rem;
+    font-weight: 800;
+    font-size: 1.1rem;
 }
+
 .stepTitle {
-  font-weight: 700;
-  margin: 5px 0;
+    font-weight: 700;
+    margin: 5px 0;
 }
+
 .stepDescription {
-  color: #fff;
+    color: #fff;
 }
+
 .recognitionSection {
-  padding: 50px 20px;
-  background: #fff7f2;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  box-sizing: border-box;
+    padding: 50px 20px;
+    background: #fff7f2;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .logoScroller {
-  overflow: hidden;
-  width: 100%;
-  max-width: 100vw;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
+
 .logoTrack {
-  display: flex;
-  flex-wrap: nowrap;
-  animation: scroll 40s linear infinite;
-  box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    animation: scroll 40s linear infinite;
+    box-sizing: border-box;
 }
+
 .logoCard {
-  flex: 0 0 auto;
-  margin: 0 25px;
-  text-align: center;
+    flex: 0 0 auto;
+    margin: 0 25px;
+    text-align: center;
 }
+
 .logoImage {
-  object-fit: contain;
+    object-fit: contain;
 }
+
 .logoName {
-  margin-top: 6px;
-  font-size: 0.85rem;
-  color: #333;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #333;
 }
+
 .volunteerSection {
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #ffdab3, #ffa366, #eb7630);
-  color: #fff;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  box-sizing: border-box;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffdab3, #ffa366, #eb7630);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .volunteerTitle {
-  font-weight: 800;
-  margin-bottom: 20px;
-  padding: 0 10px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding: 0 10px;
 }
+
 .volunteerText {
-  margin-bottom: 25px;
-  font-weight: 600;
-  padding: 0 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    padding: 0 10px;
 }
+
 .volunteerButton {
-  background: #fff;
-  color: #eb7630;
-  font-weight: 800;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
+    background: #fff;
+    color: #eb7630;
+    font-weight: 800;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
+
+.volunteerButton:hover {
+    background-color: #e65a00;
+    /* slightly darker hover */
+}
+
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-25%);
+    }
 }

@@ -1,13 +1,42 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* If you need Nunito, uncomment the line below */
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
+
+@import "tailwindcss";
+/* Tailwind Layers */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+/* Base Styles */
 body {
+  /* Set a global default font that Tailwind utility classes will override */
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Note: The @layer utilities block for 'scroll' is okay here, 
+  but the recommended place for it is in your tailwind.config.js file 
+  (as I added in the example above). If you add it to the config file,
+  you can delete this @layer block.
+*/
+@layer utilities {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); 
+    }
+  }
 }
