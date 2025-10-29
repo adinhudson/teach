@@ -33,8 +33,6 @@ function Home() {
   const repeatedLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
-    // Replaced .container with Tailwind classes
-
     <div className="text-center pt-[60px] w-full max-w-full overflow-x-hidden relative font-montserrat">
       {/* Hero Section */}
       <section className="flex flex-col justify-center items-center bg-[#f5f3f3] relative w-full z-10 py-10 md:py-12">
@@ -68,20 +66,37 @@ function Home() {
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-[50px] px-5 max-w-[1000px] mx-auto relative z-10 w-full box-border">
-        <h2 className="text-[2.3rem] font-extrabold text-[#eb7630] mb-5 px-[10px]">✨ Who We Are</h2>
-        <div className="bg-[#ffe6d1] rounded-xl p-[25px] mx-2.5 md:mx-[10px] box-border">
-          <p className="font-semibold text-[#222] text-base md:text-lg leading-relaxed md:leading-[1.9]">
-            Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
-            <span className="text-[#eb7630] font-extrabold">TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
-            <span className="text-[#eb7630] font-extrabold"> support</span>,
-            <span className="text-[#eb7630] font-extrabold"> confidence</span>, and
-            <span className="text-[#eb7630] font-extrabold"> hope</span> to succeed. <br />
-            Our mission: every child deserves the chance to
-            <span className="text-[#eb7630] font-extrabold"> learn</span>,
-            <span className="text-[#eb7630] font-extrabold"> grow</span>, and
-            <span className="text-[#eb7630] font-extrabold"> dream of a brighter future</span>.
-          </p>
+      <section className="py-16 px-12 relative z-10 w-full box-border bg-[#49444b] font-montserrat">
+
+        <div className="flex flex-col lg:flex-row justify-center items-center">
+
+
+          <div className="flex justify-center items-center w-full p-2 order-2 lg:order-1 lg:w-[50%]">
+            <img
+              src="/who_we_are_section.png"
+              alt="TEAch Volunteers"
+              className="object-contain rounded-xl w-full h-auto"
+            />
+          </div>
+
+
+          <div className="w-full order-1 lg:order-2 lg:w-[50%]">
+            <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl text-[#f5f3f3] m-5 px-[10px]">Who We Are</h1>
+            <div className="p-12 md:p-16 mx-2.5 md:mx-4 box-border">
+              <p className="font-normal text-[#f5f3f3] text-base md:text-lg leading-relaxed md:leading-[1.9]">
+                Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
+                <span className="text-[#eb7630] font-medium">TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
+                <span className="text-[#eb7630] font-medium"> support</span>,
+                <span className="text-[#eb7630] font-medium"> confidence</span>, and
+                <span className="text-[#eb7630] font-medium"> hope</span> to succeed. <br />
+                Our mission: every child deserves the chance to
+                <span className="text-[#eb7630] font-medium"> learn</span>,
+                <span className="text-[#eb7630] font-medium"> grow</span>, and
+                <span className="text-[#eb7630] font-medium"> dream of a brighter future</span>.
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 

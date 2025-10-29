@@ -90,8 +90,7 @@ function Navbar() {
           <Link
             to="/volunteer"
             className="no-underline bg-[#f7b88f] text-[#222] px-5 py-2 rounded-full transition-all duration-300 font-poiret font-semibold hover:bg-[#f67c33] hover:text-white hover:-translate-y-0.5"
-            onClick={handleLinkClick}
-          >
+            onClick={handleLinkClick}>
             Volunteer Sign-Up
           </Link>
         </li>
