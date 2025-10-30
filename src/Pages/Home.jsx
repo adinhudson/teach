@@ -66,7 +66,7 @@ function Home() {
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-16 px-12 relative z-10 w-full box-border bg-[#49444b] font-montserrat">
+      <section className="py-16 px-12 relative z-10 w-full box-border bg-white font-montserrat">
 
         <div className="flex flex-col lg:flex-row justify-center items-center">
 
@@ -81,18 +81,18 @@ function Home() {
 
 
           <div className="w-full order-1 lg:order-2 lg:w-[50%]">
-            <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl text-[#f5f3f3] m-5 px-[10px]">Who We Are</h1>
+            <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl text-black m-5 px-[10px]">Who We Are</h1>
             <div className="p-12 md:p-16 mx-2.5 md:mx-4 box-border">
-              <p className="font-normal text-[#f5f3f3] text-base md:text-lg leading-relaxed md:leading-[1.9]">
+              <p className="font-normal text-black text-base md:text-lg leading-relaxed md:leading-[1.9]">
                 Many tea estate families in Sri Lanka still face poverty, with children often leaving school too early. <br />
-                <span className="text-[#eb7630] font-medium">TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
-                <span className="text-[#eb7630] font-medium"> support</span>,
-                <span className="text-[#eb7630] font-medium"> confidence</span>, and
-                <span className="text-[#eb7630] font-medium"> hope</span> to succeed. <br />
+                <span className=" font-medium">TEAch Volunteers</span> was founded to change that. We connect dedicated volunteers with children who cannot afford private tutoring, offering them the
+                <span className=" font-medium"> support</span>,
+                <span className=" font-medium"> confidence</span>, and
+                <span className=" font-medium"> hope</span> to succeed. <br />
                 Our mission: every child deserves the chance to
-                <span className="text-[#eb7630] font-medium"> learn</span>,
-                <span className="text-[#eb7630] font-medium"> grow</span>, and
-                <span className="text-[#eb7630] font-medium"> dream of a brighter future</span>.
+                <span className=" font-medium"> learn</span>,
+                <span className=" font-medium"> grow</span>, and
+                <span className=" font-medium"> dream of a brighter future</span>.
               </p>
             </div>
           </div>
@@ -101,9 +101,9 @@ function Home() {
       </section>
 
       {/* Video Section */}
-      <section className="py-7 md:py-[30px] px-2.5 relative z-10 w-full box-border">
-        <h2 className="mb-5 text-[#eb7630] px-4 md:px-[15px] text-2xl md:text-3xl">See Us In Action 🎥</h2>
-        <div className="relative inline-block w-[90%] max-w-[700px] z-10 box-border">
+      <section className="bg-[#f5f3f3] py-7 md:py-[30px] px-2.5 relative z-10 w-full box-border font-nunito">
+        <h1 className="m-4 text-black px-4 md:px-8 text-3xl md:text-4xl lg:text-5xl font-semibold md:font-bold ">See Us In Action</h1>
+        <div className="relative m-4 md:m-8 lg:m-12 inline-block w-[90%] max-w-[700px] z-10 box-border">
           <video
             className="w-full rounded-xl shadow-xl max-w-full"
             autoPlay
@@ -121,8 +121,8 @@ function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-[50px] px-5 relative z-10">
-        <h2 className="mb-5 text-[#eb7630] px-4 md:px-[15px] text-2xl md:text-3xl">How It Works</h2>
+      <section className="bg-white py-12 px-5 relative z-10">
+        <h2 className="m-8 text-black px-4 md:px-8 lg:px-12 text-3xl md:text-4xl lg:text-5xl font-semibold md:font-bold ">How It Works</h2>
         <div className="flex flex-col md:flex-row gap-5 flex-wrap justify-center items-stretch max-w-[1200px] mx-auto">
           {steps.map((step) => (
             <div
