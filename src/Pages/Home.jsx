@@ -256,18 +256,18 @@ function Home() {
 
       {/* How It Works Section */}
       <section className="bg-white py-12 px-5 relative z-10">
-        <h2 className="m-8 text-black px-4 md:px-8 lg:px-12 text-3xl md:text-4xl lg:text-5xl font-semibold md:font-bold ">How It Works</h2>
-        <div className="flex flex-col md:flex-row gap-5 flex-wrap justify-center items-stretch max-w-[1200px] mx-auto">
+        <h2 className="mb-8 text-black text-center text-3xl md:text-4xl lg:text-5xl font-semibold md:font-bold">How It Works</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto px-4">
           {steps.map((step) => (
             <div
               key={step.number}
-              className="flex flex-col items-center rounded-xl bg-gradient-to-br from-[#ffa366] to-[#eb7630] text-white shadow-md flex-1 p-5 md:p-6 mb-4 md:mb-0 min-w-[200px] max-w-[280px]"
+              className="flex flex-col items-center rounded-xl bg-gradient-to-br from-[#ffa366] to-[#eb7630] text-white shadow-md p-6"
             >
-              <div className="text-4xl mb-2.5">{step.icon}</div>
-              <div className="flex-1 flex flex-col items-center">
-                <div className="font-extrabold text-lg">Step {step.number}</div>
-                <h3 className="font-bold my-1 text-lg">{step.title}</h3>
-                <p className="text-white text-base mt-auto">{step.description}</p>
+              <div className="text-4xl mb-3">{step.icon}</div>
+              <div className="flex-1 flex flex-col items-center text-center">
+                <div className="font-extrabold text-lg mb-1">Step {step.number}</div>
+                <h3 className="font-bold mb-3 text-lg">{step.title}</h3>
+                <p className="text-white text-base leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}
