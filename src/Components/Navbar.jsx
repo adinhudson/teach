@@ -76,11 +76,11 @@ function Navbar() {
             Home
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/about" className="no-underline text-[#222] font-semibold text-base px-4 py-2 rounded-full transition-all duration-300 relative font-poiret hover:bg-[#f7b88f]" onClick={handleLinkClick}>
             About Us
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/contact" className="no-underline text-[#222] font-semibold text-base px-4 py-2 rounded-full transition-all duration-300 relative font-poiret hover:bg-[#f7b88f]" onClick={handleLinkClick}>
             Contact Us

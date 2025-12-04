@@ -207,16 +207,16 @@ const Contact = () => {
           <h2 style={styles.title}>📞 Get in Touch</h2>
           <div style={styles.cardContainer}>
             <div style={styles.card}>
-              <div style={styles.cardTitle}>Phone</div>
-              <div style={styles.cardText}>+94 123 456 789</div>
+              <div style={styles.cardTitle}>🇬🇧 UK</div>
+              <div style={styles.cardText}>+44 7342015556</div>
             </div>
             <div style={styles.card}>
-              <div style={styles.cardTitle}>Email</div>
-              <div style={styles.cardText}>hello@teachemergency.org</div>
+              <div style={styles.cardTitle}>🇱🇰 Sri Lanka</div>
+              <div style={styles.cardText}>+94 777447367</div>
             </div>
             <div style={styles.card}>
-              <div style={styles.cardTitle}>Volunteers</div>
-              <div style={styles.cardText}>volunteer@teachemergency.org</div>
+              <div style={styles.cardTitle}>📧 Email</div>
+              <div style={styles.cardText}>teachapplk@gmail.com</div>
             </div>
           </div>
         </section>
@@ -279,8 +279,8 @@ const Contact = () => {
         <section style={styles.section}>
           <h2 style={styles.title}>🗺 Our Coverage</h2>
           <iframe
-            title="Sri Lanka Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158199.74815269178!2d79.76445686000001!3d7.873054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25e8b5e1d1d5f%3A0x0!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1694134512345!5m2!1sen!2slk"
+            title="Central Province Sri Lanka"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d506187.0793237668!2d80.35658767812498!3d7.290572199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3662358c1c1c9%3A0x2d1d5b0d8d8d8d8d!2sCentral%20Province%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1702000000000!5m2!1sen!2slk"
             style={styles.map}
             allowFullScreen
             loading="lazy"
