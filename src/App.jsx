@@ -5,25 +5,22 @@ import About from './Pages/AboutUs';
 import Contact from './Pages/ContactUs';
 import VolunteerSignup from './Pages/Volunteer_signup';
 
-//import Footer from "./components/Footer";
-//import Home from "./pages/Home";
-//import Volunteer from "./pages/Volunteer";
 
 function App() {
   // Compute a basename from PUBLIC_URL so the app works when deployed
   // at the site root (e.g. https://www.teachlk.com) or a subpath
   // (e.g. https://username.github.io/teach)
   let basename;
-  if (process.env.PUBLIC_URL) {
-    try {
-      const url = new URL(process.env.PUBLIC_URL);
-      // Use pathname as basename; if it's just '/', leave undefined
-      basename = url.pathname === '/' ? undefined : url.pathname.replace(/\/$/, '');
-    } catch (e) {
-      // If PUBLIC_URL is not a full URL, use it directly
-      basename = process.env.PUBLIC_URL === '/' ? undefined : process.env.PUBLIC_URL.replace(/\/$/, '');
-    }
+  const publicUrl = import.meta.env.VITE_PUBLIC_URL || import.meta.env.BASE_URL;
+
+if (publicUrl) {
+  try {
+    const url = new URL(publicUrl, window.location.origin);
+    basename = url.pathname === '/' ? undefined : url.pathname.replace(/\/$/, '');
+  } catch (e) {
+    basename = publicUrl === '/' ? undefined : publicUrl.replace(/\/$/, '');
   }
+}
 
   return (
     <Router basename={basename}>
@@ -32,9 +29,9 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/volunteer" element={<VolunteerSignup />} />
+            <Route path="/volunteer" element={<VolunteerSignup />} /> */}
           </Routes>
         </main>
       </div>

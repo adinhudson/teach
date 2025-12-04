@@ -10,14 +10,12 @@ function Navbar() {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
-    
     // Handle scroll for navbar transparency
     const handleScroll = () => {
       const offset = window.scrollY;
       setScrolled(offset > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -43,28 +41,22 @@ function Navbar() {
   };
 
   return (
-    <nav style={{
-      ...styles.navbar,
-      background: scrolled ? "rgba(235, 118, 48, 0.98)" : "rgba(235, 118, 48, 0.95)",
-      padding: scrolled ? "8px 5%" : "12px 5%",
-      boxShadow: scrolled ? "0 2px 20px rgba(0, 0, 0, 0.15)" : "0 2px 20px rgba(0, 0, 0, 0.1)",
-    }}>
+    <nav
+      className={`fixed top-0 left-0 right-0 flex justify-between items-center px-[5%] py-3 bg-[#f5f3f3] backdrop-blur-md shadow-md z-[1000] transition-all duration-300 h-[60px] min-h-[48px] font-poiret ${scrolled ? 'shadow-lg' : ''}`}
+    >
       {/* Logo */}
-      <Link to="/" style={styles.logoContainer}>
+      <Link to="/" className="flex items-center bg-none rounded-none p-0 shadow-none transition-transform duration-300 hover:translate-x-1">
         <img
-          src={process.env.PUBLIC_URL + "/MAIN-LOGO.jpg"}
-          alt="TEAch Volunteers"
-          style={{
-            ...styles.logoImage,
-            transform: scrolled ? "scale(0.9)" : "scale(1)",
-          }}
+          src="/teach_logo_transparent.png"
+          alt="TEAch Logo"
+          className="h-[25px] md:h-[30px] w-auto object-contain transition-transform duration-300 hover:scale-105"
         />
       </Link>
 
       {/* Hamburger button (mobile only) */}
       {isMobile && (
-        <button 
-          style={styles.hamburger} 
+        <button
+          className="text-2xl bg-[#f5f3f3] border-none text-[#222] cursor-pointer w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 font-poiret hover:bg-[#f7b88f] hover:scale-110"
           onClick={(e) => {
             e.stopPropagation();
             setIsOpen(!isOpen);
@@ -77,42 +69,28 @@ function Navbar() {
 
       {/* Links */}
       <ul
-        style={{
-          ...styles.navLinks,
-          ...(isMobile ? (isOpen ? styles.showMenu : styles.hideMenu) : {}),
-        }}
+        className={`list-none flex gap-[30px] items-center m-0 p-0 ${isMobile ? (isOpen ? 'flex flex-col absolute top-[80px] right-[5%] bg-[#f5f3f3] backdrop-blur-md p-5 rounded-xl gap-[15px] shadow-2xl z-[2000] animate-slideIn min-w-[200px]' : 'hidden') : ''}`}
       >
         <li>
-          <Link to="/" style={styles.link} onClick={handleLinkClick}>
+          <Link to="/" className="no-underline text-[#222] font-semibold text-base px-4 py-2 rounded-full transition-all duration-300 relative font-poiret hover:bg-[#f7b88f]" onClick={handleLinkClick}>
             Home
           </Link>
         </li>
         <li>
-          <Link to="/about" style={styles.link} onClick={handleLinkClick}>
+          <Link to="/about" className="no-underline text-[#222] font-semibold text-base px-4 py-2 rounded-full transition-all duration-300 relative font-poiret hover:bg-[#f7b88f]" onClick={handleLinkClick}>
             About Us
           </Link>
         </li>
         <li>
-          <Link to="/contact" style={styles.link} onClick={handleLinkClick}>
+          <Link to="/contact" className="no-underline text-[#222] font-semibold text-base px-4 py-2 rounded-full transition-all duration-300 relative font-poiret hover:bg-[#f7b88f]" onClick={handleLinkClick}>
             Contact Us
           </Link>
         </li>
         <li>
-          <Link 
-            to="/volunteer" 
-            style={{
-              ...styles.link,
-              background: "rgba(255, 255, 255, 0.15)",
-              padding: "10px 20px",
-              borderRadius: "25px",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                background: "rgba(255, 255, 255, 0.25)",
-                transform: "translateY(-2px)",
-              }
-            }} 
-            onClick={handleLinkClick}
-          >
+          <Link
+            to="/volunteer"
+            className="no-underline bg-[#f7b88f] text-[#222] px-5 py-2 rounded-full transition-all duration-300 font-poiret font-semibold hover:bg-[#f67c33] hover:text-white hover:-translate-y-0.5"
+            onClick={handleLinkClick}>
             Volunteer Sign-Up
           </Link>
         </li>
@@ -120,124 +98,5 @@ function Navbar() {
     </nav>
   );
 }
-
-const styles = {
-  navbar: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "12px 5%",
-    background: "rgba(235, 118, 48, 0.95)",
-    backdropFilter: "blur(10px)",
-    boxShadow: "0 2px 20px rgba(0, 0, 0, 0.1)",
-    zIndex: 1000,
-    transition: "all 0.3s ease",
-  },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center",
-    transform: "translateX(0)",
-    transition: "transform 0.3s ease",
-    "&:hover": {
-      transform: "translateX(5px)",
-    },
-  },
-  logoImage: {
-    height: "45px",
-    objectFit: "contain",
-    backgroundColor: "#fff",
-    padding: "6px",
-    borderRadius: "8px",
-    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-    transition: "transform 0.3s ease",
-  },
-  navLinks: {
-    listStyle: "none",
-    display: "flex",
-    gap: "30px",
-    alignItems: "center",
-    margin: 0,
-    padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "#fff",
-    fontWeight: "600",
-    fontSize: "16px",
-    padding: "8px 16px",
-    borderRadius: "25px",
-    transition: "all 0.3s ease",
-    position: "relative",
-    "&:hover": {
-      background: "rgba(255, 255, 255, 0.15)",
-    },
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      bottom: "4px",
-      left: "50%",
-      width: "0",
-      height: "2px",
-      background: "#fff",
-      transition: "all 0.3s ease",
-      transform: "translateX(-50%)",
-    },
-    "&:hover::after": {
-      width: "calc(100% - 32px)",
-    },
-  },
-  hamburger: {
-    fontSize: "24px",
-    background: "rgba(255, 255, 255, 0.1)",
-    border: "none",
-    color: "#fff",
-    cursor: "pointer",
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "all 0.3s ease",
-    "&:hover": {
-      background: "rgba(255, 255, 255, 0.2)",
-      transform: "scale(1.1)",
-    },
-  },
-  hideMenu: {
-    display: "none",
-  },
-  showMenu: {
-    display: "flex",
-    flexDirection: "column",
-    position: "absolute",
-    top: "80px",
-    right: "5%",
-    background: "rgba(235, 118, 48, 0.98)",
-    backdropFilter: "blur(10px)",
-    padding: "20px",
-    borderRadius: "16px",
-    gap: "15px",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.2)",
-    zIndex: 2000,
-    animation: "slideIn 0.3s ease",
-    transform: "translateY(0)",
-    minWidth: "200px",
-  },
-  "@keyframes slideIn": {
-    from: {
-      opacity: 0,
-      transform: "translateY(-10px)",
-    },
-    to: {
-      opacity: 1,
-      transform: "translateY(0)",
-    },
-  },
-};
 
 export default Navbar;
