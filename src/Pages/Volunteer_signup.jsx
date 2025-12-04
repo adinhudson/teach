@@ -148,14 +148,6 @@ const VolunteerSignup = () => {
             Loading…
           </iframe>
         </section>
-
-        {/* CTA Footer */}
-        <section style={styles.ctaSection}>
-          <h2 style={styles.ctaTitle}>🚀 Ready to Make a Difference?</h2>
-          <p style={styles.ctaText}>
-            Your 2 hours a week could transform a student’s future. Sign up today and be part of the change.
-          </p>
-        </section>
       </div>
     </div>
   );
