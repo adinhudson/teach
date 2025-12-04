@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const VolunteerSignup = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const styles = {
     page: {
       overflowX: "hidden",
@@ -12,7 +21,7 @@ const VolunteerSignup = () => {
       marginLeft: "calc(-50vw + 50%)",
       marginRight: "calc(-50vw + 50%)",
       background: "linear-gradient(135deg, #eb7630, #eb7630)",
-      padding: window.innerWidth <= 768 ? "40px 15px" : "60px 20px",
+      padding: isMobile ? "40px 15px" : "60px 20px",
       textAlign: "center",
       color: "#fff",
       borderRadius: 0,
@@ -22,7 +31,7 @@ const VolunteerSignup = () => {
       overflow: "hidden",
     },
     heroTitle: {
-      fontSize: window.innerWidth <= 768 ? "2rem" : "2.5rem",
+      fontSize: isMobile ? "2rem" : "2.5rem",
       fontWeight: "800",
       margin: "0 auto",
       maxWidth: "90%",
@@ -93,10 +102,38 @@ const VolunteerSignup = () => {
     <div style={styles.page}>
       {/* Hero */}
       <section style={styles.hero}>
-        <h1 style={styles.heroTitle}>Become a Volunteer</h1>
-        <p style={styles.heroText}>
-          Give just 2 hours a week to change young lives 📚
-        </p>
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '30px',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          {/* Text Content */}
+          <div style={{ flex: 1, textAlign: isMobile ? 'center' : 'left' }}>
+            <h1 style={styles.heroTitle}>Become a Volunteer</h1>
+            <p style={styles.heroText}>
+              Give just 2 hours a week to change young lives 📚
+            </p>
+          </div>
+          
+          {/* Image */}
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+            <img 
+              src="/VolunteerSignUp.jpeg" 
+              alt="Volunteer with TEAch" 
+              style={{
+                maxWidth: '100%',
+                width: isMobile ? '90%' : '400px',
+                height: 'auto',
+                borderRadius: '16px',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+              }}
+            />
+          </div>
+        </div>
       </section>
 
       <div style={styles.container}>

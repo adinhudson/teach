@@ -192,13 +192,10 @@ function Home() {
             {/* Left Side - Text Content */}
             <div className="flex-1 text-center lg:text-left">
               <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-black mb-6">
-                📱 Get the TEAch App
+                Get the TEAch App
               </h2>
-              <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed">
-                Connect with students and volunteers on the go! Download the TEAch mobile app for seamless learning experiences.
-              </p>
-              <p className="text-base md:text-lg text-gray-600 mb-8">
-                Available for both iOS and Android devices.
+              <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+                Download the TEAch mobile app for seamless learning experiences. Available for both iOS and Android devices.
               </p>
               
               {/* App Store Buttons */}

@@ -29,9 +29,9 @@ if (publicUrl) {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/volunteer" element={<VolunteerSignup />} /> */}
+            <Route path="/volunteer" element={<VolunteerSignup />} />
           </Routes>
         </main>
       </div>
