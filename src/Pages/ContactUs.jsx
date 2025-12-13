@@ -48,19 +48,20 @@ const Contact = () => {
     page: {
       overflowX: "hidden", // ✅ prevents horizontal scroll
       boxSizing: "border-box",
-      paddingTop: "69px", // Height of navbar
+      paddingTop: "60px", // Height of navbar
     },
     hero: {
       width: "100vw",
       marginLeft: "calc(-50vw + 50%)",
       marginRight: "calc(-50vw + 50%)",
-      background: "linear-gradient(135deg, #eb7630, #eb7630)",
+      background: "#f5f3f3",
       padding: window.innerWidth <= 768 ? "40px 15px" : "60px 20px",
       textAlign: "center",
-      color: "#fff",
+      color: "#333",
       borderRadius: 0,
       marginBottom: "40px",
-      boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+      marginTop: "-1px",
+      boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
       boxSizing: "border-box",
       overflow: "hidden",
     },
@@ -90,7 +91,7 @@ const Contact = () => {
       padding: "30px 20px",
       borderRadius: "16px",
       boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
-      background: "#fff",
+      background: "#f5f3f3",
     },
     title: {
       fontSize: "26px",
