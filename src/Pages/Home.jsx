@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [muted, setMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const toggleMute = () => setMuted(!muted);
 
   // Set up the state and effect for determining mobile view and handling video size/logo size
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Call immediately to set initial state
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

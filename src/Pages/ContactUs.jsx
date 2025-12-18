@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,6 +12,13 @@ const Contact = () => {
   });
 
   const formRef = useRef();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,9 +45,8 @@ const Contact = () => {
             message: "",
           });
         },
-        (error) => {
+        () => {
           alert("❌ Something went wrong. Please try again.");
-          console.error(error.text);
         }
       );
   };
@@ -55,7 +62,7 @@ const Contact = () => {
       marginLeft: "calc(-50vw + 50%)",
       marginRight: "calc(-50vw + 50%)",
       background: "#f5f3f3",
-      padding: window.innerWidth <= 768 ? "40px 15px" : "60px 20px",
+      padding: isMobile ? "40px 15px" : "60px 20px",
       textAlign: "center",
       color: "#333",
       borderRadius: 0,
@@ -66,7 +73,7 @@ const Contact = () => {
       overflow: "hidden",
     },
     heroTitle: {
-      fontSize: window.innerWidth <= 768 ? "2rem" : "2.5rem",
+      fontSize: isMobile ? "2rem" : "2.5rem",
       fontWeight: "800",
       margin: "0 auto 10px",
       lineHeight: "1.3",
